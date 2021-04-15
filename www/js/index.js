@@ -35,6 +35,10 @@ function onDeviceReady() {
     document.getElementById('deviceready').classList.add('ready');
 
     // Setup Dengage
-    Dengage.setupDengage(true,  'DENGAGE_FIREBASE_KEY', 'DENGAGE_HUAWEI_KEY', successCallback, errorCallback);
+    Dengage.setupDengage(true,
+        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL"
+        , null, function () {
+            Dengage.setContactKey('Zeeshan-Test-Cordova', successCallback, errorCallback)
+        }, errorCallback);
 
 }
