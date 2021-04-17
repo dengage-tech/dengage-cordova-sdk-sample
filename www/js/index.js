@@ -21,24 +21,56 @@
 // See https://cordova.apache.org/docs/en/latest/cordova/events/events.html#deviceready
 document.addEventListener('deviceready', onDeviceReady, false);
 
-function successCallback(msg) {
-    alert(msg)
-}
+const showAlertMsg = (showAlertMsg) => alert(showAlertMsg)
 
-function errorCallback(msg) {
-    alert(msg)
-}
+/**
+ * Function that is used to change callback behavior of cordova plugin to promise based
+ * @param f
+ * @returns {function(...[*]): Promise<unknown>}
+ */
+const promisify = (f) => (...a) => new Promise((res, rej) => f(...(a || {}), res, rej))
 
 function onDeviceReady() {
     // Cordova is now initialized. Have fun!
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     document.getElementById('deviceready').classList.add('ready');
 
-    // Setup Dengage
-    Dengage.setupDengage(true,
-        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL"
-        , null, function () {
-            Dengage.setContactKey('Zeeshan-Test-Cordova', successCallback, errorCallback)
-        }, errorCallback);
+    /**
+     *
+     *  setupDengage will Return OK if setup succesfully
+     * Other it will give error message
+     * User need to be provide LogStatus, FirebaseKey and Huawei Key
+     * One is required from Firebase Key and Huawei key
+     *
+     */
+    promisify(Dengage.setupDengage)(true,
+        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
+        null)
+        // .then(() => {
+        //     /**
+        //      * setContactKey will return `Contact Key` that is set by user
+        //      * In error case, it will return a error message
+        //      *
+        //      */
+        //     return promisify(Dengage.setContactKey)('Cordova-DEV-Test-Real-Device-Contact-KEY')
+        // })
+        .then((contactKey)=> {
+            /**
+             * getContactKey to retrieve `Contact key`
+             */
+            return promisify(Dengage.getContactKey)()
+        })
+        .then((contactKey)=> {
+            /**
+             * getMobilePushToken to retrieve `Push Notification Token`
+             * In error case, it will return a error message `unable to get token.` (If unable to get token)
+             */
+            return promisify(Dengage.getMobilePushToken)()
+        })
+        // .then((token)=> {
+        //     return promisify(Dengage.setPermission)(true)
+        // })
 
+        .then(showAlertMsg)
+        .catch(showAlertMsg)
 }
