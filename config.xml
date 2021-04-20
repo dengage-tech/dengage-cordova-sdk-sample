@@ -13,12 +13,6 @@
     </author>
     <content src="index.html"/>
     <access origin="*"/>
-    <allow-intent href="http://*/*"/>
-    <allow-intent href="https://*/*"/>
-    <allow-intent href="tel:*"/>
-    <allow-intent href="sms:*"/>
-    <allow-intent href="mailto:*"/>
-    <allow-intent href="geo:*"/>
 
     <platform name="android">
         <allow-intent href="market:*"/>
@@ -42,12 +36,13 @@
                     <action android:name="com.google.firebase.MESSAGING_EVENT"/>
                 </intent-filter>
             </service>
-            <receiver android:name="com.dengage.sdk.NotificationReceiver"
+            <receiver android:name=".MyReceiver"
                       android:exported="false">
                 <intent-filter>
                     <action android:name="com.dengage.push.intent.RECEIVE"/>
                     <action android:name="com.dengage.push.intent.OPEN"/>
                     <action android:name="com.dengage.push.intent.DELETE"/>
+                    <action android:name="com.dengage.push.intent.ACTION_CLICK" />
                 </intent-filter>
             </receiver>
         </config-file>
