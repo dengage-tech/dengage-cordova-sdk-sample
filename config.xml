@@ -15,41 +15,12 @@
     <access origin="*"/>
 
     <platform name="android">
-        <allow-intent href="market:*"/>
-
-        <config-file parent="/*" target="AndroidManifest.xml">
-            <uses-permission android:name="android.permission.INTERNET"/>
-            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-            <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE"/>
-        </config-file>
-
-        <config-file parent="./application" target="AndroidManifest.xml">
-            <meta-data
-                    android:name="den_event_api_url"
-                    android:value="https://event.dengage.com"/>
-            <meta-data
-                    android:name="den_push_api_url"
-                    android:value="https://push.dengage.com"/>
-
-            <service android:name="com.dengage.sdk.FcmMessagingService">
-                <intent-filter>
-                    <action android:name="com.google.firebase.MESSAGING_EVENT"/>
-                </intent-filter>
-            </service>
-            <receiver android:name=".MyReceiver"
-                      android:exported="false">
-                <intent-filter>
-                    <action android:name="com.dengage.push.intent.RECEIVE"/>
-                    <action android:name="com.dengage.push.intent.OPEN"/>
-                    <action android:name="com.dengage.push.intent.DELETE"/>
-                    <action android:name="com.dengage.push.intent.ACTION_CLICK" />
-                </intent-filter>
-            </receiver>
-        </config-file>
         <resource-file src="google-services.json" target="app/google-services.json"/>
+
         <preference name="GradlePluginGoogleServicesEnabled" value="true"/>
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.4"/>
     </platform>
+
     <platform name="ios">
         <allow-intent href="itms:*"/>
         <allow-intent href="itms-apps:*"/>

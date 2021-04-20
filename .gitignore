@@ -7,3 +7,10 @@ node_modules/
 /plugins/
 package-lock.json
 .idea/*
+
+# Android
+build/
+.idea
+.gradle
+local.properties
+*.iml

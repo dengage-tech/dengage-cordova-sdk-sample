@@ -8,6 +8,7 @@ import android.util.Log;
 import com.dengage.sdk.NotificationReceiver;
 
 public class MyReceiver extends NotificationReceiver {
+
     @Override
     protected void onActionClick(Context context, Intent intent) {
         Bundle extras = intent.getExtras();
@@ -22,5 +23,4 @@ public class MyReceiver extends NotificationReceiver {
         // Remove if you prefer to handle targetUrl which is actually correspond a deeplink.
         super.onActionClick(context, intent);
     }
-
 }
