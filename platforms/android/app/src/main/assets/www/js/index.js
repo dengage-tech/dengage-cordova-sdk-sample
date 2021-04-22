@@ -56,6 +56,9 @@ function getToken() {
         .catch(showAlertMsg)
 }
 
+/**
+ * Page View Event Example
+ */
 function pageView() {
     const pageViewDataObj = {
         page_type: 'category',
@@ -65,7 +68,6 @@ function pageView() {
     }
 
     promisify(Dengage.pageView)(pageViewDataObj)
-        .then((text)=>alert('Page View' + text))
         .catch(showAlertMsg)
 }
 
