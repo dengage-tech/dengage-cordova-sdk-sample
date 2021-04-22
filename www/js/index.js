@@ -56,6 +56,21 @@ function getToken() {
         .catch(showAlertMsg)
 }
 
+/**
+ * Page View Event Example
+ */
+function pageView() {
+    const pageViewDataObj = {
+        page_type: 'category',
+        category_id: '2001',
+        page_url: 'https://app.dengage.com',
+        page_title: 'cordova_test_page_title'
+    }
+
+    promisify(Dengage.pageView)(pageViewDataObj)
+        .catch(showAlertMsg)
+}
+
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     /**

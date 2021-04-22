@@ -175,9 +175,11 @@ public class MyReceiver extends NotificationReceiver {
         // create channel
         String channelId = null;
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            NotificationChannel notificationChannel = getNotificationChannel();
-            createNotificationChannel(context, notificationChannel);
-            channelId = notificationChannel.getId();
+//@todo will revisit on 23th April 2021 - Giving Error during compilation
+
+//            NotificationChannel notificationChannel = getNotificationChannel();
+//            createNotificationChannel(context, notificationChannel);
+//            channelId = notificationChannel.getId();
         }
 
         // build notification with the layout.
