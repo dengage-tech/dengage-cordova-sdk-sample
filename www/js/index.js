@@ -46,7 +46,7 @@ function getContactKey() {
 
 function setContactKey() {
     promisify(Dengage.setContactKey)(document.getElementById('contact-key').value || '')
-        .then(()=>document.getElementById('loader').classList.remove('loader'))
+        .then(() => document.getElementById('loader').classList.remove('loader'))
         .catch(showAlertMsg)
 }
 
@@ -57,7 +57,7 @@ function getToken() {
 }
 
 /**
- * Page View Event Example
+ * Page View Event Example - Table (page_view_events)
  */
 function pageView() {
     const pageViewDataObj = {
@@ -68,6 +68,243 @@ function pageView() {
     }
 
     promisify(Dengage.pageView)(pageViewDataObj)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Add To Cart Event Example - Table (shopping_cart_events)
+ */
+function addToCart() {
+    // addToCart action starts here.
+    // All items currently exists in shopping cart must be added to an array
+    const cartItem = {}
+    cartItem["product_id"] = 102
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    let cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+
+    // Add to cart action
+    const addParams = {
+        "product_id": 101,
+        "product_variant_id": 1,
+        "quantity": 1,
+        "unit_price": 10.00,
+        "discounted_price": 9.99,
+        // ... extra columns in shopping_cart_events table, can be added here
+        "cartItems": cartItems // all items in cart
+    }
+
+    promisify(Dengage.addToCart)(addParams)
+        .catch(showAlertMsg)
+    // addToCart action ends here.
+}
+
+/**
+ * Remove From Cart Event Example - Table (shopping_cart_events)
+ */
+function removeFromCart() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    let cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    // Remove from cart action
+    const removeParams = {
+        "product_id": 1,
+        "product_variant_id": 1,
+        "quantity": 1,
+        "unit_price": 10.00,
+        "discounted_price": 9.99,
+        // ... extra columns in shopping_cart_events table, can be added here
+        "cartItems": cartItems // all items in cart
+    }
+
+    promisify(Dengage.removeFromCart)(removeParams)
+        .catch(showAlertMsg)
+}
+
+/**
+ * View Cart Event Example - Table (shopping_cart_events)
+ */
+function viewCart() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    let cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    promisify(Dengage.viewCart)(cartItem)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Begin Checkout Event Example - Table (shopping_cart_events)
+ */
+function beginCheckout() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    let cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    promisify(Dengage.beginCheckout)(cartItem)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Place Order Event Example - Table (shopping_cart_events)
+ */
+function placeOrder() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    const cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    const orderData = {
+        order_id: '123',
+        item_count: 1,
+        total_amount: 99.9,
+        payment_method: 'card',
+        shipping: 5,
+        discounted_price: 29.99,
+        coupon_code: '',
+        cartItem: cartItems
+    }
+
+    promisify(Dengage.placeOrder)(orderData)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Cancel Order Event Example - Table (shopping_cart_events)
+ */
+function cancelOrder() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    cartItem["product_variant_id"] = 1
+    cartItem["quantity"] = 1
+    cartItem["unit_price"] = 10.00
+    cartItem["discounted_price"] = 9.99
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    const cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    const orderData = {
+        item_count: 1,
+        total_amount: 99.9,
+        discounted_price: 29.99,
+        cartItem: cartItems
+    }
+
+    promisify(Dengage.cancelOrder)(orderData)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Add To Wishlist Event Example - Table (wishlist_events)
+ */
+function addToWishList() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    const cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    const wishListData = {
+        product_id: 1,
+        cartItem: cartItems
+    }
+
+    promisify(Dengage.addToWishList)(wishListData)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Remove From Wishlist Event Example - Table (wishlist_events)
+ */
+function removeFromWishList() {
+    const cartItem = {}
+    cartItem["product_id"] = 1
+    // ... extra columns in shopping_cart_events_detail table, can be added in cartItem
+
+    const cartItems = []
+    cartItems.push(cartItem)
+    cartItems.push(cartItem)
+
+    const wishListData = {
+        product_id: 1,
+        cartItem: cartItems
+    }
+
+    promisify(Dengage.removeFromWishList)(wishListData)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Search Event Example - Table (search_events)
+ */
+function search() {
+    const data = {
+        keywords: "hello",
+        result_count: 123,
+        filters: "q=keywords"
+    }
+
+    promisify(Dengage.search)(data)
+        .catch(showAlertMsg)
+}
+
+/**
+ * Send Device Event
+ */
+function sendDeviceEvent() {
+    // for example if you have a table named "events"
+    // and events table has "key", "event_date", "event_name", "product_id" columns
+    // you just have to send the columns except "key" and "event_date", because those columns sent by the SDK
+
+    const data = {
+        event_name: 'page_view',
+        product_id: '12345'
+    }
+
+    promisify(Dengage.sendDeviceEvent)('events', data)
         .catch(showAlertMsg)
 }
 
