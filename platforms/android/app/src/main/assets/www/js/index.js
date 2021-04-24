@@ -140,7 +140,7 @@ function removeFromCart() {
 /**
  * View Cart Event Example - Table (shopping_cart_events)
  */
-const viewCart = () => {
+function viewCart() {
     const cartItem = {}
     cartItem["product_id"] = 1
     cartItem["product_variant_id"] = 1
@@ -307,6 +307,29 @@ function sendDeviceEvent() {
     promisify(Dengage.sendDeviceEvent)('events', data)
         .catch(showAlertMsg)
 }
+
+/**
+ *
+ * @type {{getInboxMessages: (function(): Promise<unknown>),
+ * setInboxMessageAsClicked: (function(): Promise<unknown>),
+ * deleteInboxMessage: (function(): Promise<unknown>)}}
+ */
+const appInboxEvents = {
+    setInboxMessageAsClicked: function () {
+        return promisify(Dengage.setInboxMessageAsClicked)('your-message-id-here')
+            .catch(showAlertMsg)
+    },
+    deleteInboxMessage: function () {
+        return promisify(Dengage.setInboxMessageAsClicked)('your-message-id-here')
+            .catch(showAlertMsg)
+    },
+    getInboxMessages: function (offset = 0, limit = 10) {
+        return promisify(Dengage.getInboxMessages)(offset, limit)
+            .then(msgs => console.log(msgs)) // array of inbox messages
+            .catch(showAlertMsg)
+    }
+}
+
 
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
