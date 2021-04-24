@@ -1,0 +1,11 @@
+{
+    "declarations": {},
+    "sources": {},
+    "libraries": {
+        "Dengage.Framework": {
+            "name": "Dengage.Framework",
+            "spec": "~> 2.5",
+            "count": 1
+        }
+    }
+}

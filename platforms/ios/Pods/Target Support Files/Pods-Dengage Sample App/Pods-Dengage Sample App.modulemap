@@ -1,0 +1,6 @@
+module Pods_Dengage_Sample_App {
+  umbrella header "Pods-Dengage Sample App-umbrella.h"
+
+  export *
+  module * { export * }
+}
