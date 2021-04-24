@@ -40,13 +40,13 @@ buck-out/
 # Bundle artifact
 *.jsbundle
 
-/ios/Podfile.lock
+platforms/ios/Podfile.lock
 
 # CocoaPods
-/ios/Pods/
+platforms/ios/Pods/
 *.lock
 yarn.lock
 # keystores & releases.
-android/app/keystores/
-android/app/release/
+platforms/android/app/keystores/
+platforms/android/app/release/
 

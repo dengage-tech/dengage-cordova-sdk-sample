@@ -1,6 +1,0 @@
-module Dengage_Framework {
-  umbrella header "Dengage.Framework-umbrella.h"
-
-  export *
-  module * { export * }
-}
