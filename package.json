@@ -25,12 +25,12 @@
       "cordova-plugin-dengage": {
         "ANDROID_FIREBASE_MESSAGING_VERSION": "21.0.1",
         "ANDROID_FIREBASE_CORE_VERSION": "18.0.2",
-        "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2"
+        "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2",
+        "USESWIFTLANGUAGEVERSION": "5"
       }
     },
     "platforms": [
-      "android",
-      "ios"
+      "android"
     ]
   },
   "dependencies": {}

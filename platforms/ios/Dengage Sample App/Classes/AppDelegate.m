@@ -28,12 +28,27 @@
 #import "AppDelegate.h"
 #import "MainViewController.h"
 
+#import "Dengage_Sample_App-Swift.h"
+
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication*)application didFinishLaunchingWithOptions:(NSDictionary*)launchOptions
 {
     self.viewController = [[MainViewController alloc] init];
     return [super application:application didFinishLaunchingWithOptions:launchOptions];
+}
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken
+{
+
+    Dengage *dengageInstance = [Dengage new];
+
+    [dengageInstance registerForPushToken:(deviceToken)];
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:  (NSError *)error
+{
+    NSLog(@"Error %@", error);
 }
 
 @end
