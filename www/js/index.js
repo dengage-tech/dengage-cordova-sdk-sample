@@ -330,6 +330,13 @@ const appInboxEvents = {
     }
 }
 
+function askNotificationPermission() {
+    promisify(Dengage.promptForPushNotificationsWithCallback)()
+        .then(permission => {
+            alert("Push Notification Permission set to: " + permission)
+        })
+        .catch(showAlertMsg)
+}
 
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
@@ -347,7 +354,7 @@ function onDeviceReady() {
 
     // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
     promisify(Dengage.setupDengage)(
-        true, "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL", null)
+        true, "X6n4T_s_l_Ws_p_l_jX_s_l_n06hzDns_s_l_AhrVyf_s_l_J2ZotOZXkTeiGX3iDw56FruUOh1C2_s_l_ojdCb26_p_l_uErBVC1Ff8kRvzAIUWIEajaJu8zUv5XBtB_s_l_DfjEpuGvKuGRkzW4fpvyPr5OzXg", null)
         .then(getContactKey)
         .catch(showAlertMsg)
 }
