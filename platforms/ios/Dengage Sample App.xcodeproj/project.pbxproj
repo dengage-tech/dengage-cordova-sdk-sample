@@ -16,7 +16,7 @@
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		79C56F2A03D2FB24CB35938A /* libPods-Dengage Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 383222225978492AD647345D /* libPods-Dengage Sample App.a */; };
-		B6363318807045CE8FF0DA82 /* Dengage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64707293A164A58918623DD /* Dengage.swift */; };
+		54D08FE036AA463B816959BA /* Dengage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9381F4A0A2C441D094BCB42E /* Dengage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,7 +69,7 @@
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Dengage Sample App/config.xml"; sourceTree = "<group>"; };
-		B64707293A164A58918623DD /* Dengage.swift */ = {isa = PBXFileReference; name = "Dengage.swift"; path = "cordova-plugin-dengage/Dengage.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		9381F4A0A2C441D094BCB42E /* Dengage.swift */ = {isa = PBXFileReference; name = "Dengage.swift"; path = "cordova-plugin-dengage/Dengage.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +179,7 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				B64707293A164A58918623DD /* Dengage.swift */,
+				9381F4A0A2C441D094BCB42E /* Dengage.swift */,
 			);
 			name = Plugins;
 			path = "Dengage Sample App/Plugins";
@@ -337,7 +337,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				B6363318807045CE8FF0DA82 /* Dengage.swift in Sources */,
+				54D08FE036AA463B816959BA /* Dengage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
