@@ -21,7 +21,7 @@ var Dengage = {
         exec(success, error, 'Dengage', 'setPermission', [permission])
     },
     setMobilePushToken: function (token, success, error) {
-        exec(success, error, 'Dengage', 'getMobilePushToken', [token])
+        exec(success, error, 'Dengage', 'setMobilePushToken', [token])
     },
     getMobilePushToken: function (success, error) {
         exec(success, error, 'Dengage', 'getMobilePushToken', [])
@@ -76,7 +76,14 @@ var Dengage = {
     },
     setInboxMessageAsClicked: function (id, success, error) {
         exec(success, error, 'Dengage', 'setInboxMessageAsClicked', [id])
-    }
+    },
+    promptForPushNotifications: function (success, error) {
+        exec(success, error, 'Dengage', 'promptForPushNotifications', [])
+    },
+    promptForPushNotificationsWithCallback: function (success, error) {
+        exec(success, error, 'Dengage', 'promptForPushNotificationsWithCallback', [])
+    },
+
 };
 
 module.exports = Dengage

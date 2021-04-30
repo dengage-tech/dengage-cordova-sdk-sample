@@ -50,5 +50,9 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>DengageApiUrl</key>
+	<string>https://push.dengage.com</string>
+	<key>DengageEventApiUrl</key>
+	<string>https://event.dengage.com</string>
 </dict>
 </plist>

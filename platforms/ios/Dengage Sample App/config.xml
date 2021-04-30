@@ -38,8 +38,12 @@
     </author>
     <content src="index.html" />
     <access origin="*" />
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
+    <edit-config file="*-Info.plist" mode="merge" target="DengageApiUrl">
+        <string>https://push.dengage.com</string>
+    </edit-config>
+    <edit-config file="*-Info.plist" mode="merge" target="DengageEventApiUrl">
+        <string>https://event.dengage.com</string>
+    </edit-config>
     <preference name="AllowInlineMediaPlayback" value="false" />
     <preference name="BackupWebStorage" value="cloud" />
     <preference name="DisallowOverscroll" value="false" />

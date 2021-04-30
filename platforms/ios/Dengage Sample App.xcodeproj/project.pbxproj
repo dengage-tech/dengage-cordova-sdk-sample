@@ -16,7 +16,7 @@
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		79C56F2A03D2FB24CB35938A /* libPods-Dengage Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 383222225978492AD647345D /* libPods-Dengage Sample App.a */; };
-		D9906D7577AB483F99F3B1EB /* Dengage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD921D711DB14F0CA37D966A /* Dengage.swift */; };
+		B6363318807045CE8FF0DA82 /* Dengage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B64707293A164A58918623DD /* Dengage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,11 +65,11 @@
 		50AD0A5A4A9F0CFD4F1871C9 /* Pods-Dengage Sample App.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dengage Sample App.release.xcconfig"; path = "Target Support Files/Pods-Dengage Sample App/Pods-Dengage Sample App.release.xcconfig"; sourceTree = "<group>"; };
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = CDVLaunchScreen.storyboard; path = "Dengage Sample App/CDVLaunchScreen.storyboard"; sourceTree = SOURCE_ROOT; };
 		8D1107310486CEB800E47090 /* Dengage Sample App-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "Dengage Sample App-Info.plist"; path = "Dengage Sample App/Dengage Sample App-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = SOURCE_ROOT; };
-		CD921D711DB14F0CA37D966A /* Dengage.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = Dengage.swift; path = "cordova-plugin-dengage/Dengage.swift"; sourceTree = "<group>"; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = "Dengage Sample App/config.xml"; sourceTree = "<group>"; };
+		B64707293A164A58918623DD /* Dengage.swift */ = {isa = PBXFileReference; name = "Dengage.swift"; path = "cordova-plugin-dengage/Dengage.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -179,7 +179,7 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				CD921D711DB14F0CA37D966A /* Dengage.swift */,
+				B64707293A164A58918623DD /* Dengage.swift */,
 			);
 			name = Plugins;
 			path = "Dengage Sample App/Plugins";
@@ -337,7 +337,7 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				D9906D7577AB483F99F3B1EB /* Dengage.swift in Sources */,
+				B6363318807045CE8FF0DA82 /* Dengage.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

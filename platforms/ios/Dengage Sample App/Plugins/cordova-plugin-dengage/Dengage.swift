@@ -24,7 +24,7 @@ public class Dengage : CDVPlugin {
         let launchOptions = command.argument(at: 2) as! NSDictionary?
         
         Dengage_Framework.Dengage.setIntegrationKey(key: key as String)
-            
+        
         if (launchOptions != nil) {
             Dengage_Framework.Dengage.initWithLaunchOptions(withLaunchOptions: launchOptions as! [UIApplication.LaunchOptionsKey : Any])
         } else {
@@ -62,16 +62,22 @@ public class Dengage : CDVPlugin {
     
     
     @objc
-    func promptForPushNotificationsWithPermission(_ command: CDVInvokedUrlCommand) {
+    func promptForPushNotificationsWithCallback(_ command: CDVInvokedUrlCommand) {
         Dengage_Framework.Dengage.promptForPushNotifications() {
             hasPermission in self.commandDelegate.send(CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: hasPermission), callbackId: command.callbackId)
         }
     }
     
     @objc
+    func setPermission(permission: Bool) {
+        Dengage_Framework.Dengage.setUserPermission(permission: permission)
+    }
+    
+    
+    @objc
     func setContactKey(_ command: CDVInvokedUrlCommand) {
         let contactKey: String = command.argument(at: 0) as! String? ?? ""
-
+        
         Dengage_Framework.Dengage.setContactKey(contactKey: contactKey)
         
         let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: contactKey)

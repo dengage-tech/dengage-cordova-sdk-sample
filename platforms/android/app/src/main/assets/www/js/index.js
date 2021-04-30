@@ -25,7 +25,7 @@ const showAlertMsg = (showAlertMsg) => {
     const loaderClassList = document.getElementById('loader').classList;
     if (loaderClassList) loaderClassList.remove('loader');
 
-    alert(showAlertMsg)
+    alert(showAlertMsg || 'Something went wrong')
 }
 
 /**
@@ -341,9 +341,13 @@ function onDeviceReady() {
      * One is required from Firebase Key and Huawei key
      *
      */
-    promisify(Dengage.setupDengage)(true,
-        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
-        null)
+    // promisify(Dengage.setupDengage)(true,
+    //     "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
+    //     null)
+
+    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
+    promisify(Dengage.setupDengage)(
+        true, "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL", null)
         .then(getContactKey)
         .catch(showAlertMsg)
 }
