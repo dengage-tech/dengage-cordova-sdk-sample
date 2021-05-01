@@ -6,3 +6,8 @@ target 'Dengage Sample App' do
 	project 'Dengage Sample App.xcodeproj'
 	pod 'Dengage.Framework', '~> 2.5'
 end
+
+
+target 'DengageNotificationServiceExtension' do  
+  pod 'Dengage.Framework', '~> 2.5'
+end
