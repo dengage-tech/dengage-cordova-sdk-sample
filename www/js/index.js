@@ -52,7 +52,14 @@ function setContactKey() {
 
 function getToken() {
     promisify(Dengage.getMobilePushToken)()
-        .then(token => document.getElementById('token').innerHTML = token)
+        .then(token => document.getElementById('tokenSubscription').innerHTML = token)
+        .catch(showAlertMsg)
+}
+
+
+function getSubscription() {
+    promisify(Dengage.getSubscription)()
+        .then(subscription => document.getElementById('tokenSubscription').innerHTML = subscription)
         .catch(showAlertMsg)
 }
 
