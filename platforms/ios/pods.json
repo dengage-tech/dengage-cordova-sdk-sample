@@ -9,7 +9,12 @@
     "libraries": {
         "Dengage.Framework": {
             "name": "Dengage.Framework",
-            "spec": "~> 2.5",
+            "spec": "~> 3.0.4",
+            "count": 1
+        },
+        "Dengage.Framework.Extensions": {
+            "name": "Dengage.Framework.Extensions",
+            "spec": "~> 1.0.10",
             "count": 1
         }
     }

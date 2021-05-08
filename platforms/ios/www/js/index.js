@@ -52,7 +52,14 @@ function setContactKey() {
 
 function getToken() {
     promisify(Dengage.getMobilePushToken)()
-        .then(token => document.getElementById('token').innerHTML = token)
+        .then(token => document.getElementById('tokenSubscription').innerHTML = token)
+        .catch(showAlertMsg)
+}
+
+
+function getSubscription() {
+    promisify(Dengage.getSubscription)()
+        .then(subscription => document.getElementById('tokenSubscription').innerHTML = subscription)
         .catch(showAlertMsg)
 }
 
@@ -223,7 +230,7 @@ function placeOrder() {
         shipping: 5,
         discounted_price: 29.99,
         coupon_code: '',
-        "cartItems": cartItems // all items in cart
+        cartItems // all items in cart
     }
 
     promisify(Dengage.placeOrder)(orderData)
@@ -362,6 +369,10 @@ function askNotificationPermission() {
 
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+    if (cordova.platformId === 'iOS') {
+        document.getElementById('ask-permission').classList.remove('d-none');
+    }
+
     /**
      *
      *  setupDengage will Return OK if setup succesfully

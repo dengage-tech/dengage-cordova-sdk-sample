@@ -51,9 +51,12 @@
 
     <div class="form-group mt-15">
         <button type="button" class="btn btn-primary mt-2" onclick="getToken()">Get Token</button>
-        <button type="button" class="btn btn-primary mt-2 d-none" onclick="askNotificationPermission()">Ask Permission</button>
+        <button type="button" class="btn btn-primary mt-2" onclick="askNotificationPermission()">Ask Permission</button>
     </div>
-    <span class="text-dark" id="token"></span>
+    <div class="form-group mt-15">
+        <button type="button" class="btn btn-primary mt-2" onclick="getSubscription()">Get Subscription</button>
+    </div>
+    <span class="text-dark" id="tokenSubscription"></span>
 
     <div class="center-block loader" id="loader"></div>
 

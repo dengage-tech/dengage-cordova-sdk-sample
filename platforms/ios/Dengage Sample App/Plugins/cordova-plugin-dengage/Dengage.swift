@@ -86,6 +86,29 @@ public class Dengage : CDVPlugin {
     }
 
     @objc
+    func setLogStatus(_ command: CDVInvokedUrlCommand) {
+        let isVisible = command.argument(at: 0) as! Bool ?? false
+
+        Dengage_Framework.Dengage.setLogStatus(isVisible: isVisible)
+
+        let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK)
+
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    }
+
+    @objc
+    func setMobilePushToken(_ command: CDVInvokedUrlCommand) {
+        let token: String = command.argument(at: 0) as! String ?? ""
+
+        Dengage_Framework.Dengage.setToken(token: token)
+
+        let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: token)
+
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+    }
+
+
+    @objc
     func getContactKey(_ command: CDVInvokedUrlCommand) {
         let contactKey = Dengage_Framework.Dengage.getContactKey()
         let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: contactKey)
@@ -440,6 +463,27 @@ public class Dengage : CDVPlugin {
             self.commandDelegate.send(CDVPluginResult.init(status: CDVCommandStatus_OK, messageAs: response), callbackId: command.callbackId)
 
         }
+    }
+
+    @objc
+    func setNavigation (_ command: CDVInvokedUrlCommand) -> Void {
+        Dengage_Framework.Dengage.setNavigation()
+        let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK)
+
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+
+    }
+
+    @objc
+    func setNavigationWithName (_ command: CDVInvokedUrlCommand) -> Void {
+        let screenName: String = command.argument(at: 0) as! String
+
+        Dengage_Framework.Dengage.setNavigation(screenName: screenName as String)
+
+        let pluginResult:CDVPluginResult = CDVPluginResult.init(status: CDVCommandStatus_OK)
+
+        self.commandDelegate.send(pluginResult, callbackId: command.callbackId)
+
     }
 
     private func sendToken(_ token: String ){
