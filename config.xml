@@ -1,6 +1,6 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.dengage.cordova"
-        android-packageName="com.dengage.cordova"
+<widget android-packageName="com.dengage.cordova"
+        ios-CFBundleIdentifier="com.dengage.cordova-demo"
         version="1.0.0" xmlns="http://www.w3.org/ns/widgets"
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:cdv="http://cordova.apache.org/ns/1.0">
