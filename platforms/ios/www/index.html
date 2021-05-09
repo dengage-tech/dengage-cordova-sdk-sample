@@ -42,24 +42,36 @@
 <body>
 
 <div class="app">
-    <div id="container">
-        <div class="form-group">
-            <input type="text" class="form-control" id="contact-key" placeholder="Set Contact Key">
-        </div>
-        <button type="button" class="btn btn-primary center" onclick="setContactKey()">Set/Update Contact Key</button>
-    </div>
-
-    <div class="form-group mt-15">
-        <button type="button" class="btn btn-primary mt-2" onclick="getToken()">Get Token</button>
-        <button type="button" class="btn btn-primary mt-2" onclick="askNotificationPermission()">Ask Permission</button>
-    </div>
-    <div class="form-group mt-15">
-        <button type="button" class="btn btn-primary mt-2" onclick="getSubscription()">Get Subscription</button>
-    </div>
-    <span class="text-dark" id="tokenSubscription"></span>
-
     <div class="center-block loader" id="loader"></div>
 
+    <div class="d-none-1" id="app-root">
+        <div id="container">
+            <div class="form-group">
+                <input type="text" class="form-control" id="contact-key" placeholder="Set Contact Key">
+            </div>
+            <button type="button" class="btn btn-primary center" onclick="setContactKey()">Set/Update Contact Key
+            </button>
+        </div>
+
+        <div class="form-group mt-15">
+            <button type="button" class="btn btn-primary mt-2" onclick="getToken()">Get Token</button>
+            <button type="button" class="btn btn-primary mt-2" onclick="askNotificationPermission()">Ask Permission
+            </button>
+        </div>
+        <div class="form-group mt-15">
+            <button type="button" class="btn btn-primary mt-2" onclick="getSubscription()">Get Subscription</button>
+        </div>
+        <span class="text-dark" id="tokenSubscription"></span>
+
+        <form>
+            <div class="form-group row">
+                <div class="col-sm-10 mt-15">
+                    <input type="text" class="form-control" id="navigationVal" placeholder="Set Navigation with Name">
+                    <button type="button" class="btn btn-primary mt-15 btn-block" onclick="setNavigationWithName()">Get Navigation</button>
+                </div>
+            </div>
+        </form>
+    </div>
 </div>
 
 <script src="cordova.js"></script>

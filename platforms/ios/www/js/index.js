@@ -25,6 +25,8 @@ const showAlertMsg = (showAlertMsg) => {
     const loaderClassList = document.getElementById('loader').classList;
     if (loaderClassList) loaderClassList.remove('loader');
 
+    document.getElementById('app-root').classList.remove('d-none');
+
     alert(showAlertMsg || 'Something went wrong')
 }
 
@@ -39,6 +41,7 @@ function getContactKey() {
     promisify(Dengage.getContactKey)()
         .then(contactKey => {
             document.getElementById('loader').classList.remove('loader');
+            document.getElementById('app-root').classList.remove('d-none');
             document.getElementById('contact-key').value = contactKey
         })
         .catch(showAlertMsg)
@@ -367,6 +370,16 @@ function askNotificationPermission() {
         .catch(showAlertMsg)
 }
 
+function setNavigationWithName() {
+    const navigationValue = document.getElementById('navigationVal').value || ''
+    if (!navigationValue) {
+        alert('Please enter value for input')
+        return
+    }
+    promisify(Dengage.setNavigationWithName)(navigationValue)
+        .catch(showAlertMsg)
+}
+
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     if (cordova.platformId === 'iOS') {
@@ -386,8 +399,14 @@ function onDeviceReady() {
     //     null)
 
     // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
-    promisify(Dengage.setupDengage)(
-        true, "X6n4T_s_l_Ws_p_l_jX_s_l_n06hzDns_s_l_AhrVyf_s_l_J2ZotOZXkTeiGX3iDw56FruUOh1C2_s_l_ojdCb26_p_l_uErBVC1Ff8kRvzAIUWIEajaJu8zUv5XBtB_s_l_DfjEpuGvKuGRkzW4fpvyPr5OzXg", null)
+        promisify(Dengage.setupDengage)(
+        true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
         .then(getContactKey)
         .catch(showAlertMsg)
+
+    /**
+     * Prod iOS Sample App IntegerationKey
+     */
+    //WOltW5UGHtLefSeRipIjOTgnf_p_l_zDf_p_l_0iBWxNDtY5gDHE8EHa0p5QKS_s_l_CsRzgcHKKLrYl_s_l_ukbckfd4Byu0jsEgE_p_l__s_l_GlxpaOfSkAd6WdXdL_s_l_oH64qUyAiaRkz2F1bXMcQK
+
 }
