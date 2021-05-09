@@ -25,6 +25,8 @@ const showAlertMsg = (showAlertMsg) => {
     const loaderClassList = document.getElementById('loader').classList;
     if (loaderClassList) loaderClassList.remove('loader');
 
+    document.getElementById('app-root').classList.remove('d-none');
+
     alert(showAlertMsg || 'Something went wrong')
 }
 
@@ -39,6 +41,7 @@ function getContactKey() {
     promisify(Dengage.getContactKey)()
         .then(contactKey => {
             document.getElementById('loader').classList.remove('loader');
+            document.getElementById('app-root').classList.remove('d-none');
             document.getElementById('contact-key').value = contactKey
         })
         .catch(showAlertMsg)
@@ -52,7 +55,14 @@ function setContactKey() {
 
 function getToken() {
     promisify(Dengage.getMobilePushToken)()
-        .then(token => document.getElementById('token').innerHTML = token)
+        .then(token => document.getElementById('tokenSubscription').innerHTML = token)
+        .catch(showAlertMsg)
+}
+
+
+function getSubscription() {
+    promisify(Dengage.getSubscription)()
+        .then(subscription => document.getElementById('tokenSubscription').innerHTML = subscription)
         .catch(showAlertMsg)
 }
 
@@ -153,7 +163,18 @@ function viewCart() {
     cartItems.push(cartItem)
     cartItems.push(cartItem)
 
-    promisify(Dengage.viewCart)(cartItem)
+    // View from cart action
+    const viewCartParams = {
+        "product_id": 1,
+        "product_variant_id": 1,
+        "quantity": 1,
+        "unit_price": 10.00,
+        "discounted_price": 9.99,
+        // ... extra columns in shopping_cart_events table, can be added here
+        "cartItems": cartItems // all items in cart
+    }
+
+    promisify(Dengage.viewCart)(viewCartParams)
         .catch(showAlertMsg)
 }
 
@@ -173,7 +194,18 @@ function beginCheckout() {
     cartItems.push(cartItem)
     cartItems.push(cartItem)
 
-    promisify(Dengage.beginCheckout)(cartItem)
+    // Begin Checkout Action
+    const beginCheckoutParams = {
+        "product_id": 1,
+        "product_variant_id": 1,
+        "quantity": 1,
+        "unit_price": 10.00,
+        "discounted_price": 9.99,
+        // ... extra columns in shopping_cart_events table, can be added here
+        "cartItems": cartItems // all items in cart
+    }
+
+    promisify(Dengage.beginCheckout)(beginCheckoutParams)
         .catch(showAlertMsg)
 }
 
@@ -201,7 +233,7 @@ function placeOrder() {
         shipping: 5,
         discounted_price: 29.99,
         coupon_code: '',
-        cartItem: cartItems
+        cartItems // all items in cart
     }
 
     promisify(Dengage.placeOrder)(orderData)
@@ -226,9 +258,9 @@ function cancelOrder() {
 
     const orderData = {
         item_count: 1,
-        total_amount: 99.9,
+        total_amount: 99, //total amount is int
         discounted_price: 29.99,
-        cartItem: cartItems
+        cartItems
     }
 
     promisify(Dengage.cancelOrder)(orderData)
@@ -249,7 +281,7 @@ function addToWishList() {
 
     const wishListData = {
         product_id: 1,
-        cartItem: cartItems
+        cartItems
     }
 
     promisify(Dengage.addToWishList)(wishListData)
@@ -270,7 +302,7 @@ function removeFromWishList() {
 
     const wishListData = {
         product_id: 1,
-        cartItem: cartItems
+        cartItems
     }
 
     promisify(Dengage.removeFromWishList)(wishListData)
@@ -338,8 +370,22 @@ function askNotificationPermission() {
         .catch(showAlertMsg)
 }
 
+function setNavigationWithName() {
+    const navigationValue = document.getElementById('navigationVal').value || ''
+    if (!navigationValue) {
+        alert('Please enter value for input')
+        return
+    }
+    promisify(Dengage.setNavigationWithName)(navigationValue)
+        .catch(showAlertMsg)
+}
+
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
+    if (cordova.platformId === 'iOS') {
+        document.getElementById('ask-permission').classList.remove('d-none');
+    }
+
     /**
      *
      *  setupDengage will Return OK if setup succesfully
@@ -348,13 +394,21 @@ function onDeviceReady() {
      * One is required from Firebase Key and Huawei key
      *
      */
-    // promisify(Dengage.setupDengage)(true,
-    //     "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
-    //     null)
-
-    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
-    promisify(Dengage.setupDengage)(
-        true, "X6n4T_s_l_Ws_p_l_jX_s_l_n06hzDns_s_l_AhrVyf_s_l_J2ZotOZXkTeiGX3iDw56FruUOh1C2_s_l_ojdCb26_p_l_uErBVC1Ff8kRvzAIUWIEajaJu8zUv5XBtB_s_l_DfjEpuGvKuGRkzW4fpvyPr5OzXg", null)
+    promisify(Dengage.setupDengage)(true,
+        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
+        null)
         .then(getContactKey)
         .catch(showAlertMsg)
+
+    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
+    // promisify(Dengage.setupDengage)(
+    //     true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
+    //     .then(getContactKey)
+    //     .catch(showAlertMsg)
+
+    /**
+     * Prod iOS Sample App IntegerationKey
+     */
+    //WOltW5UGHtLefSeRipIjOTgnf_p_l_zDf_p_l_0iBWxNDtY5gDHE8EHa0p5QKS_s_l_CsRzgcHKKLrYl_s_l_ukbckfd4Byu0jsEgE_p_l__s_l_GlxpaOfSkAd6WdXdL_s_l_oH64qUyAiaRkz2F1bXMcQK
+
 }

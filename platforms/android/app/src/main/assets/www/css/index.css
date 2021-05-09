@@ -107,7 +107,7 @@ h1 {
     }
 }
 
-#token {
+#tokenSubscription {
     word-break: break-word;
     font-size: 15px;
 }
@@ -131,4 +131,8 @@ h1 {
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+
+.d-none {
+    display: none !important;
 }
