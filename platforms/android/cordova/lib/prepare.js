@@ -59,9 +59,9 @@ module.exports.prepare = function (cordovaProject, options) {
     const minSdkVersion = this._config.getPreference('android-minSdkVersion', 'android');
     const maxSdkVersion = this._config.getPreference('android-maxSdkVersion', 'android');
     const targetSdkVersion = this._config.getPreference('android-targetSdkVersion', 'android');
-    const androidXEnabled = this._config.getPreference('AndroidXEnabled', 'android');
     const isGradlePluginKotlinEnabled = this._config.getPreference('GradlePluginKotlinEnabled', 'android');
     const gradlePluginKotlinCodeStyle = this._config.getPreference('GradlePluginKotlinCodeStyle', 'android');
+    const androidXAppCompatVersion = this._config.getPreference('AndroidXAppCompatVersion', 'android');
 
     const gradlePropertiesUserConfig = {};
     if (minSdkVersion) gradlePropertiesUserConfig.cdvMinSdkVersion = minSdkVersion;
@@ -72,10 +72,8 @@ module.exports.prepare = function (cordovaProject, options) {
         gradlePropertiesUserConfig['kotlin.code.style'] = gradlePluginKotlinCodeStyle || 'official';
     }
 
-    // Both 'useAndroidX' and 'enableJetifier' are linked together.
-    if (androidXEnabled) {
-        gradlePropertiesUserConfig['android.useAndroidX'] = androidXEnabled;
-        gradlePropertiesUserConfig['android.enableJetifier'] = androidXEnabled;
+    if (androidXAppCompatVersion) {
+        gradlePropertiesUserConfig.cdvAndroidXAppCompatVersion = androidXAppCompatVersion;
     }
 
     const gradlePropertiesParser = new GradlePropertiesParser(this.locations.root);
@@ -330,10 +328,13 @@ function makeSplashCleanupMap (projectRoot, resourcesDir) {
 function updateSplashes (cordovaProject, platformResourcesDir) {
     var resources = cordovaProject.projectConfig.getSplashScreens('android');
 
-    // if there are "splash" elements in config.xml
+    // if there are no "splash" elements in config.xml
     if (resources.length === 0) {
         events.emit('verbose', 'This app does not have splash screens defined');
-        return;
+        // We must not return here!
+        // If the user defines no splash screens, the cleanup map will cause any
+        // existing splash screen images (e.g. the defaults that we copy into a
+        // new app) to be removed from the app folder, which is what we want.
     }
 
     // Build an initial resource map that deletes all existing splash screens

@@ -59,6 +59,9 @@
 
         <preference name="GradlePluginGoogleServicesEnabled" value="true"/>
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.4"/>
+        <allow-navigation href="https://app/*"/>
+        <allow-navigation href="http://localhost/*"/>
+        <allow-navigation href="https://localhost/*"/>
     </platform>
 
     <platform name="ios">
