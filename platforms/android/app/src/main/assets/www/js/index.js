@@ -372,10 +372,6 @@ function askNotificationPermission() {
 
 function setNavigationWithName() {
     const navigationValue = document.getElementById('navigationVal').value || ''
-    if (!navigationValue) {
-        alert('Please enter value for input')
-        return
-    }
     promisify(Dengage.setNavigationWithName)(navigationValue)
         .catch(showAlertMsg)
 }
