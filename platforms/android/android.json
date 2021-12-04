@@ -10,33 +10,33 @@
           "/*": [
             {
               "xml": "<uses-permission android:name=\"android.permission.INTERNET\" />",
-              "count": 6
+              "count": 24
             },
             {
               "xml": "<uses-permission android:name=\"android.permission.ACCESS_NETWORK_STATE\" />",
-              "count": 6
+              "count": 24
             },
             {
               "xml": "<uses-permission android:name=\"com.google.android.c2dm.permission.RECEIVE\" />",
-              "count": 6
+              "count": 24
             }
           ],
           "./application": [
             {
               "xml": "<service android:name=\"com.dengage.sdk.FcmMessagingService\"><intent-filter><action android:name=\"com.google.firebase.MESSAGING_EVENT\" /></intent-filter></service>",
-              "count": 6
+              "count": 24
             },
             {
               "xml": "<receiver android:exported=\"false\" android:name=\".MyReceiver\"><intent-filter><action android:name=\"com.dengage.push.intent.RECEIVE\" /><action android:name=\"com.dengage.push.intent.OPEN\" /><action android:name=\"com.dengage.push.intent.DELETE\" /><action android:name=\"com.dengage.push.intent.ITEM_CLICK\" /><action android:name=\"com.dengage.push.intent.CAROUSEL_ITEM_CLICK\" /><action android:name=\"com.dengage.push.intent.ACTION_CLICK\" /></intent-filter></receiver>",
-              "count": 6
+              "count": 24
             },
             {
               "xml": "<meta-data android:name=\"den_event_api_url\" android:value=\"https://event.dengage.com\" />",
-              "count": 6
+              "count": 24
             },
             {
               "xml": "<meta-data android:name=\"den_push_api_url\" android:value=\"https://push.dengage.com\" />",
-              "count": 6
+              "count": 24
             }
           ]
         }

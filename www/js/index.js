@@ -376,6 +376,22 @@ function setNavigationWithName() {
         .catch(showAlertMsg)
 }
 
+function setTags() {
+    const tags = [
+        {
+            "tagName": "ZeeshanAfzalSatti",
+            "tagValue": "CordovaSDK",
+        }
+    ];
+
+    promisify(Dengage.setTags)(tags)
+        .then((s) => {
+            alert("Tagged Added Successfully " + s)
+        })
+        .catch(showAlertMsg)
+}
+
+
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     if (cordova.platformId === 'iOS') {
