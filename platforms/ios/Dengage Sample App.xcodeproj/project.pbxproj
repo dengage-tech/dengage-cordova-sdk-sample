@@ -19,12 +19,14 @@
 		10F59A4F2646A34300751761 /* CarouselNotificationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F59A4C2646A34200751761 /* CarouselNotificationCell.swift */; };
 		10F59A502646A34300751761 /* DengageRecievedMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F59A4D2646A34300751761 /* DengageRecievedMessage.swift */; };
 		10F59A512646A34300751761 /* DengageNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 10F59A4E2646A34300751761 /* DengageNotificationViewController.swift */; };
+		13D07786B78C736342830CB9 /* libPods-Dengage Sample App.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B1BB8110C08D54B8C445E9E /* libPods-Dengage Sample App.a */; };
 		195042D5608D4B5D994070B1 /* Dengage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6686EC8A5B454562B72BAF00 /* Dengage.swift */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
+		3C538CA194FE339723E94E64 /* libPods-DengageNotificationServiceExtension.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 97A10B090FBF1290161AE3A4 /* libPods-DengageNotificationServiceExtension.a */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -130,6 +132,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3C538CA194FE339723E94E64 /* libPods-DengageNotificationServiceExtension.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
+				13D07786B78C736342830CB9 /* libPods-Dengage Sample App.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -217,7 +221,7 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
+		29B97314FDCFA39411CA2CEA = {
 			isa = PBXGroup;
 			children = (
 				10F59A112646A1C200751761 /* Dengage_Sample_App-bridging-header.h */,
@@ -397,7 +401,7 @@
 				en,
 				Base,
 			);
-			mainGroup = 29B97314FDCFA39411CA2CEA /* CustomTemplate */;
+			mainGroup = 29B97314FDCFA39411CA2CEA;
 			productRefGroup = 19C28FACFE9D520D11CA2CBB /* Products */;
 			projectDirPath = "";
 			projectReferences = (

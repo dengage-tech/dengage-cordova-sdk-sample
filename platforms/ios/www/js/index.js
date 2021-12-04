@@ -376,6 +376,22 @@ function setNavigationWithName() {
         .catch(showAlertMsg)
 }
 
+function setTags() {
+    const tags = [
+        {
+            "tagName": "ZeeshanAfzalSatti",
+            "tagValue": "CordovaSDK_",
+        }
+    ];
+
+    promisify(Dengage.setTags)(tags)
+        .then(() => {
+            alert("Tagged Added Successfully")
+        })
+        .catch(showAlertMsg)
+}
+
+
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
     if (cordova.platformId === 'iOS') {
@@ -393,9 +409,11 @@ function onDeviceReady() {
     // promisify(Dengage.setupDengage)(true,
     //     "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
     //     null)
+    //     .then(getContactKey)
+    //     .catch(showAlertMsg)
 
     // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
-        promisify(Dengage.setupDengage)(
+    promisify(Dengage.setupDengage)(
         true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
         .then(getContactKey)
         .catch(showAlertMsg)

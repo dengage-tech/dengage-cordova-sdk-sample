@@ -385,8 +385,8 @@ function setTags() {
     ];
 
     promisify(Dengage.setTags)(tags)
-        .then((s) => {
-            alert("Tagged Added Successfully " + s)
+        .then(() => {
+            alert("Tagged Added Successfully")
         })
         .catch(showAlertMsg)
 }
