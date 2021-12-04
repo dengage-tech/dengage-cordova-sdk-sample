@@ -13,7 +13,7 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "git+https://github.com/apache/cordova-android.git",
+    "cordova-android": "^10.1.1",
     "cordova-ios": "^6.2.0",
     "cordova-plugin-add-swift-support": "^2.0.2",
     "cordova-plugin-dengage": "file:../CordovaDengage",
@@ -25,8 +25,7 @@
       "cordova-plugin-dengage": {
         "ANDROID_FIREBASE_MESSAGING_VERSION": "21.0.1",
         "ANDROID_FIREBASE_CORE_VERSION": "18.0.2",
-        "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2",
-        "USESWIFTLANGUAGEVERSION": "5"
+        "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2"
       }
     },
     "platforms": [

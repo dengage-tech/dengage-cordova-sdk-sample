@@ -12,7 +12,6 @@ import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaInterface;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.CordovaWebView;
-import org.apache.cordova.LOG;
 import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -525,11 +524,11 @@ public class Dengage extends CordovaPlugin {
 
     private void setNavigationWithName(String name, CallbackContext callbackContext) {
         try {
-            if (isEmptyOrNull(name)) {
-                this.manager.setNavigation(this.cordova.getActivity());
-            } else {
-                this.manager.setNavigation(this.cordova.getActivity(), name);
-            }
+             if (isEmptyOrNull(name)) {
+                 this.manager.setNavigation(this.cordova.getActivity());
+             } else {
+                 this.manager.setNavigation(this.cordova.getActivity(), name);
+             }
 
             callbackContext.success();
         } catch (Exception e) {

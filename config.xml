@@ -59,6 +59,7 @@
 
         <preference name="GradlePluginGoogleServicesEnabled" value="true"/>
         <preference name="GradlePluginGoogleServicesVersion" value="4.3.4"/>
+        <preference name="android-targetSdkVersion" value="30" />
         <allow-navigation href="https://app/*"/>
         <allow-navigation href="http://localhost/*"/>
         <allow-navigation href="https://localhost/*"/>
