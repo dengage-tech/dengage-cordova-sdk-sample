@@ -37,18 +37,17 @@ const showAlertMsg = (showAlertMsg) => {
  */
 const promisify = (f) => (...a) => new Promise((res, rej) => f(...(a || {}), res, rej))
 
+function onReceiveOpenPush (message) {
+    alert(message)
+}
+
 function getContactKey() {
     promisify(Dengage.getContactKey)()
         .then(contactKey => {
             document.getElementById('loader').classList.remove('loader');
             document.getElementById('app-root').classList.remove('d-none');
             document.getElementById('contact-key').value = contactKey
-            Dengage.registerNotification((message) => {
-                alert(message)
-            }, (err) => {
-                console.error(err)
-            })
-
+            Dengage.registerNotification(onReceiveOpenPush, showAlertMsg)
         })
         .catch(showAlertMsg)
 }
