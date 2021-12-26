@@ -37,12 +37,17 @@ const showAlertMsg = (showAlertMsg) => {
  */
 const promisify = (f) => (...a) => new Promise((res, rej) => f(...(a || {}), res, rej))
 
+function onReceiveOpenPush (message) {
+    alert(message)
+}
+
 function getContactKey() {
     promisify(Dengage.getContactKey)()
         .then(contactKey => {
             document.getElementById('loader').classList.remove('loader');
             document.getElementById('app-root').classList.remove('d-none');
             document.getElementById('contact-key').value = contactKey
+            Dengage.registerNotification(onReceiveOpenPush, showAlertMsg)
         })
         .catch(showAlertMsg)
 }
@@ -406,17 +411,17 @@ function onDeviceReady() {
      * One is required from Firebase Key and Huawei key
      *
      */
-    // promisify(Dengage.setupDengage)(true,
-    //     "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
-    //     null)
-    //     .then(getContactKey)
-    //     .catch(showAlertMsg)
-
-    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
-    promisify(Dengage.setupDengage)(
-        true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
+    promisify(Dengage.setupDengage)(true,
+        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
+        null)
         .then(getContactKey)
         .catch(showAlertMsg)
+
+    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
+    // promisify(Dengage.setupDengage)(
+    //     true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
+    //     .then(getContactKey)
+    //     .catch(showAlertMsg)
 
     /**
      * Prod iOS Sample App IntegerationKey
