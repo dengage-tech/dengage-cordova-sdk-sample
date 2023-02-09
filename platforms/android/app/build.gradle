@@ -109,7 +109,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-dengage/cordova-build.gradle"
+apply from: "../cordova-plugin-dengage/hello-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -184,12 +184,10 @@ android {
         versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
         applicationId privateHelpers.extractStringFromManifest("package")
 
-        minSdkVersion cordovaConfig.MIN_SDK_VERSION
-        if (cordovaConfig.MAX_SDK_VERSION != null) {
-            maxSdkVersion cordovaConfig.MAX_SDK_VERSION
-        }
-        targetSdkVersion cordovaConfig.SDK_VERSION
-        compileSdkVersion cordovaConfig.SDK_VERSION
+        minSdkVersion 23
+
+        targetSdkVersion 32
+        compileSdkVersion 32
     }
 
     lintOptions {
@@ -295,9 +293,10 @@ dependencies {
 
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.google.firebase:firebase-core:18.0.2"
-    implementation "com.google.firebase:firebase-messaging:21.0.1"
+    implementation "com.google.firebase:firebase-core:20.1.2"
+    implementation "com.google.firebase:firebase-messaging:23.0.2"
     implementation "com.google.firebase:firebase-analytics:18.0.2"
+    implementation "com.github.dengage-tech:dengage-android-sdk:6.0.9.1"
     // SUB-PROJECT DEPENDENCIES END
 }
 
@@ -341,6 +340,5 @@ if (hasProperty('postBuildExtras')) {
     postBuildExtras()
 }
 
-if (cordovaConfig.IS_GRADLE_PLUGIN_GOOGLE_SERVICES_ENABLED) {
-    apply plugin: 'com.google.gms.google-services'
-}
+apply plugin: 'com.google.gms.google-services'
+

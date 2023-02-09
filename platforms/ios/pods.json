@@ -7,14 +7,9 @@
         }
     },
     "libraries": {
-        "Dengage.Framework": {
-            "name": "Dengage.Framework",
-            "spec": "~> 3.0.4",
-            "count": 1
-        },
-        "Dengage.Framework.Extensions": {
-            "name": "Dengage.Framework.Extensions",
-            "spec": "~> 1.0.10",
+        "Dengage": {
+            "name": "Dengage",
+            "spec": "~> 5.15.1",
             "count": 1
         }
     }

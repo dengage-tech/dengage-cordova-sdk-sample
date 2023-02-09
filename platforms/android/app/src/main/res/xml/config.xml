@@ -1,57 +1,17 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget android-packageName="com.dengage.cordova" id="io.cordova.helloCordova" ios-CFBundleIdentifier="com.dengage.cordova-demo" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:android="http://schemas.android.com/apk/res/android" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <feature name="Dengage">
-        <param name="android-package" value="Dengage" />
+<widget id="com.example.hello" version="1.0.0" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <feature name="DengageCR">
+        <param name="android-package" value="DengageCR" />
         <param name="onload" value="true" />
     </feature>
-    <name>Dengage Sample App</name>
-    <description>
-        A sample Apache Cordova application that responds to the deviceready event.
-    </description>
-    <author email="dev@cordova.apache.org" href="http://cordova.io">
+    <name>HelloWorld</name>
+    <description>Sample Apache Cordova App</description>
+    <author email="dev@cordova.apache.org" href="https://cordova.apache.org">
         Apache Cordova Team
     </author>
     <content src="index.html" />
-    <access origin="*" />
-    <resource-file src="google-services.json" target="app/google-services.json" />
-    <resource-file src="drawable/ic_arrow_left.xml" target="app/src/main/res/drawable/ic_arrow_left.xml" />
-    <resource-file src="drawable/ic_arrow_right.xml" target="app/src/main/res/drawable/ic_arrow_right.xml" />
-    <resource-file src="layout/den_carousel_collapsed.xml" target="app/src/main/res/layout/den_carousel_collapsed.xml" />
-    <resource-file src="layout/den_carousel_landscape.xml" target="app/src/main/res/layout/den_carousel_landscape.xml" />
-    <resource-file src="layout/den_carousel_portrait.xml" target="app/src/main/res/layout/den_carousel_portrait.xml" />
-    <resource-file src="values/colors.xml" target="app/src/main/res/values/colors.xml" />
-    <resource-file src="values/strings.xml" target="app/src/main/res/values/strings.xml" />
-    <resource-file src="java-files/MyReceiver.java" target="app/src/main/java/com/dengage/cordova/MyReceiver.java" />
-    <config-file parent="/*" target="AndroidManifest.xml">
-        <uses-permission android:name="android.permission.INTERNET" />
-        <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-        <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
-    </config-file>
-    <config-file parent="./application" target="AndroidManifest.xml">
-        <service android:name="com.dengage.sdk.FcmMessagingService">
-            <intent-filter>
-                <action android:name="com.google.firebase.MESSAGING_EVENT" />
-            </intent-filter>
-        </service>
-        <receiver android:exported="false" android:name=".MyReceiver">
-            <intent-filter>
-                <action android:name="com.dengage.push.intent.RECEIVE" />
-                <action android:name="com.dengage.push.intent.OPEN" />
-                <action android:name="com.dengage.push.intent.DELETE" />
-                <action android:name="com.dengage.push.intent.ITEM_CLICK" />
-                <action android:name="com.dengage.push.intent.CAROUSEL_ITEM_CLICK" />
-                <action android:name="com.dengage.push.intent.ACTION_CLICK" />
-            </intent-filter>
-        </receiver>
-        <meta-data android:name="den_event_api_url" android:value="https://event.dengage.com" />
-        <meta-data android:name="den_push_api_url" android:value="https://push.dengage.com" />
-    </config-file>
-    <allow-navigation href="https://app/*" />
-    <allow-navigation href="http://localhost/*" />
-    <allow-navigation href="https://localhost/*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
     <preference name="loglevel" value="DEBUG" />
     <preference name="AndroidXEnabled" value="true" />
-    <preference name="GradlePluginGoogleServicesEnabled" value="true" />
-    <preference name="GradlePluginGoogleServicesVersion" value="4.3.4" />
-    <preference name="android-targetSdkVersion" value="30" />
 </widget>

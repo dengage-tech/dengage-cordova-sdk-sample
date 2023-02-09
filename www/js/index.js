@@ -42,31 +42,32 @@ function onReceiveOpenPush (message) {
 }
 
 function getContactKey() {
-    promisify(Dengage.getContactKey)()
+    document.getElementById('loader').classList.remove('loader');
+    document.getElementById('app-root').classList.remove('d-none');
+  
+    promisify(DengageCR.getContactKey)()
         .then(contactKey => {
-            document.getElementById('loader').classList.remove('loader');
-            document.getElementById('app-root').classList.remove('d-none');
-            document.getElementById('contact-key').value = contactKey
-            Dengage.registerNotification(onReceiveOpenPush, showAlertMsg)
+             document.getElementById('contact-key').value = contactKey
+            DengageCR.registerNotification(onReceiveOpenPush, showAlertMsg)
         })
         .catch(showAlertMsg)
 }
 
 function setContactKey() {
-    promisify(Dengage.setContactKey)(document.getElementById('contact-key').value || '')
+    promisify(DengageCR.setContactKey)(document.getElementById('contact-key').value || '')
         .then(() => document.getElementById('loader').classList.remove('loader'))
         .catch(showAlertMsg)
 }
 
 function getToken() {
-    promisify(Dengage.getMobilePushToken)()
+    promisify(DengageCR.getMobilePushToken)()
         .then(token => document.getElementById('tokenSubscription').innerHTML = token)
         .catch(showAlertMsg)
 }
 
 
 function getSubscription() {
-    promisify(Dengage.getSubscription)()
+    promisify(DengageCR.getSubscription)()
         .then(subscription => document.getElementById('tokenSubscription').innerHTML = subscription)
         .catch(showAlertMsg)
 }
@@ -78,11 +79,11 @@ function pageView() {
     const pageViewDataObj = {
         page_type: 'category',
         category_id: '2001',
-        page_url: 'https://app.dengage.com',
+        page_url: 'https://app.DengageCR.com',
         page_title: 'cordova_test_page_title'
     }
 
-    promisify(Dengage.pageView)(pageViewDataObj)
+    promisify(DengageCR.pageView)(pageViewDataObj)
         .catch(showAlertMsg)
 }
 
@@ -116,7 +117,7 @@ function addToCart() {
         "cartItems": cartItems // all items in cart
     }
 
-    promisify(Dengage.addToCart)(addParams)
+    promisify(DengageCR.addToCart)(addParams)
         .catch(showAlertMsg)
     // addToCart action ends here.
 }
@@ -148,7 +149,7 @@ function removeFromCart() {
         "cartItems": cartItems // all items in cart
     }
 
-    promisify(Dengage.removeFromCart)(removeParams)
+    promisify(DengageCR.removeFromCart)(removeParams)
         .catch(showAlertMsg)
 }
 
@@ -179,7 +180,7 @@ function viewCart() {
         "cartItems": cartItems // all items in cart
     }
 
-    promisify(Dengage.viewCart)(viewCartParams)
+    promisify(DengageCR.viewCart)(viewCartParams)
         .catch(showAlertMsg)
 }
 
@@ -210,7 +211,7 @@ function beginCheckout() {
         "cartItems": cartItems // all items in cart
     }
 
-    promisify(Dengage.beginCheckout)(beginCheckoutParams)
+    promisify(DengageCR.beginCheckout)(beginCheckoutParams)
         .catch(showAlertMsg)
 }
 
@@ -241,7 +242,7 @@ function placeOrder() {
         cartItems // all items in cart
     }
 
-    promisify(Dengage.placeOrder)(orderData)
+    promisify(DengageCR.placeOrder)(orderData)
         .catch(showAlertMsg)
 }
 
@@ -268,7 +269,7 @@ function cancelOrder() {
         cartItems
     }
 
-    promisify(Dengage.cancelOrder)(orderData)
+    promisify(DengageCR.cancelOrder)(orderData)
         .catch(showAlertMsg)
 }
 
@@ -289,7 +290,7 @@ function addToWishList() {
         cartItems
     }
 
-    promisify(Dengage.addToWishList)(wishListData)
+    promisify(DengageCR.addToWishList)(wishListData)
         .catch(showAlertMsg)
 }
 
@@ -310,7 +311,7 @@ function removeFromWishList() {
         cartItems
     }
 
-    promisify(Dengage.removeFromWishList)(wishListData)
+    promisify(DengageCR.removeFromWishList)(wishListData)
         .catch(showAlertMsg)
 }
 
@@ -324,7 +325,7 @@ function search() {
         filters: "q=keywords"
     }
 
-    promisify(Dengage.search)(data)
+    promisify(DengageCR.search)(data)
         .catch(showAlertMsg)
 }
 
@@ -341,7 +342,7 @@ function sendDeviceEvent() {
         product_id: '12345'
     }
 
-    promisify(Dengage.sendDeviceEvent)('events', data)
+    promisify(DengageCR.sendDeviceEvent)('events', data)
         .catch(showAlertMsg)
 }
 
@@ -353,22 +354,22 @@ function sendDeviceEvent() {
  */
 const appInboxEvents = {
     setInboxMessageAsClicked: function () {
-        return promisify(Dengage.setInboxMessageAsClicked)('your-message-id-here')
+        return promisify(DengageCR.setInboxMessageAsClicked)('your-message-id-here')
             .catch(showAlertMsg)
     },
     deleteInboxMessage: function () {
-        return promisify(Dengage.setInboxMessageAsClicked)('your-message-id-here')
+        return promisify(DengageCR.setInboxMessageAsClicked)('your-message-id-here')
             .catch(showAlertMsg)
     },
     getInboxMessages: function (offset = 0, limit = 10) {
-        return promisify(Dengage.getInboxMessages)(offset, limit)
+        return promisify(DengageCR.getInboxMessages)(offset, limit)
             .then(msgs => console.log(msgs)) // array of inbox messages
             .catch(showAlertMsg)
     }
 }
 
 function askNotificationPermission() {
-    promisify(Dengage.promptForPushNotificationsWithCallback)()
+    promisify(DengageCR.promptForPushNotificationsWithCallback)()
         .then(permission => {
             alert("Push Notification Permission set to: " + permission)
         })
@@ -377,7 +378,7 @@ function askNotificationPermission() {
 
 function setNavigationWithName() {
     const navigationValue = document.getElementById('navigationVal').value || ''
-    promisify(Dengage.setNavigationWithName)(navigationValue)
+    promisify(DengageCR.setNavigationWithName)(navigationValue)
         .catch(showAlertMsg)
 }
 
@@ -389,7 +390,7 @@ function setTags() {
         }
     ];
 
-    promisify(Dengage.setTags)(tags)
+    promisify(DengageCR.setTags)(tags)
         .then(() => {
             alert("Tagged Added Successfully")
         })
@@ -399,33 +400,28 @@ function setTags() {
 
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
-    if (cordova.platformId === 'iOS') {
-        document.getElementById('ask-permission').classList.remove('d-none');
-    }
-
+   
+    console.log("running babaes");
+getContactKey();
     /**
      *
-     *  setupDengage will Return OK if setup succesfully
+     *  setupDengageCR will Return OK if setup succesfully
      * Other it will give error message
      * User need to be provide LogStatus, FirebaseKey and Huawei Key
      * One is required from Firebase Key and Huawei key
      *
      */
-    promisify(Dengage.setupDengage)(true,
-        "x9n1OYdlpqmz_s_l_IMW10YREw1T1V6CKyww7_s_l_NiXZ0RPV0_p_l_y5DJddPsS20QPXiOUvZGjYmsL0mEY3PIeAcLLfqDBblxbpHPfIubh6DrQsaUPP3RuP1Uz5ZjrLz1gwtluCZL",
-        null)
-        .then(getContactKey)
-        .catch(showAlertMsg)
+   
 
-    // iOS Example SetupDengage(logStatus, integrationKey, launchOptions)
-    // promisify(Dengage.setupDengage)(
-    //     true, "feGVSqo_p_l_N18fgL2Psf2NTPhZcmBKm_s_l_VLd6FD7bmJmlanf8MGt2uVWrtikRWADagafkr0mg35tv86a0HaEBG5d03gRqajUoIOojGMuh3hwONrtJvgE_p_l__p_l__s_l_s2YJSqPoBnqk", null)
-    //     .then(getContactKey)
-    //     .catch(showAlertMsg)
+    // iOS Example SetupDengageCR(logStatus, integrationKey, launchOptions)
+    // promisify(DengageCR.setupDengage)(
+      //   true, "PE99_s_l_xjb2hXe42KaWrIXx6iEnwsQNvMGPH_s_l_lMfG3CpPTTxLhrGgcC55KMa2IuAdNBRGOTR4Bx2o_p_l_z1c63X_p_l_vWTeKdKHkeNOVYVezsv4ERVaZw9FkXHsbex_p_l_M6gujQEEb5Ld2zg8eg8w1w_p_l_PKlOU21g_e_q__e_q_", null)
+       // .then(getContactKey)
+        //.catch(showAlertMsg)
 
     /**
      * Prod iOS Sample App IntegerationKey
      */
-    //WOltW5UGHtLefSeRipIjOTgnf_p_l_zDf_p_l_0iBWxNDtY5gDHE8EHa0p5QKS_s_l_CsRzgcHKKLrYl_s_l_ukbckfd4Byu0jsEgE_p_l__s_l_GlxpaOfSkAd6WdXdL_s_l_oH64qUyAiaRkz2F1bXMcQK
+    //
 
 }

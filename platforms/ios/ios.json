@@ -5,31 +5,11 @@
   },
   "config_munge": {
     "files": {
-      "*-Info.plist": {
-        "parents": {
-          "DengageApiUrl": [
-            {
-              "xml": "<string>https://push.dengage.com</string>",
-              "count": 1,
-              "mode": "merge",
-              "id": "config.xml"
-            }
-          ],
-          "DengageEventApiUrl": [
-            {
-              "xml": "<string>https://event.dengage.com</string>",
-              "count": 1,
-              "mode": "merge",
-              "id": "config.xml"
-            }
-          ]
-        }
-      },
       "config.xml": {
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"Dengage\"><param name=\"ios-package\" value=\"Dengage\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"DengageCR\"><param name=\"ios-package\" value=\"DengageCR\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             }
           ]
@@ -39,30 +19,26 @@
   },
   "installed_plugins": {
     "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "com.dengage.cordova"
-    },
-    "cordova-plugin-whitelist": {
-      "PACKAGE_NAME": "com.dengage.cordova"
+      "PACKAGE_NAME": "com.example.hello"
     },
     "cordova-plugin-dengage": {
       "USESWIFTLANGUAGEVERSION": "5",
-      "PACKAGE_NAME": "com.dengage.cordova"
+      "PACKAGE_NAME": "com.example.hello"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
-      "id": "cordova-plugin-dengage.Dengage",
-      "file": "plugins/cordova-plugin-dengage/www/Dengage.js",
+      "id": "cordova-plugin-dengage.DengageCR",
+      "file": "plugins/cordova-plugin-dengage/www/DengageCR.js",
       "pluginId": "cordova-plugin-dengage",
       "clobbers": [
-        "Dengage"
+        "DengageCR"
       ]
     }
   ],
   "plugin_metadata": {
     "cordova-plugin-add-swift-support": "2.0.2",
-    "cordova-plugin-whitelist": "1.3.4",
     "cordova-plugin-dengage": "1.0"
   }
 }
