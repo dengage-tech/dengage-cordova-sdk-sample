@@ -401,27 +401,11 @@ function setTags() {
 function onDeviceReady() {
     console.log('Running cordova-' + cordova.platformId + '@' + cordova.version);
    
-    console.log("running babaes");
+ 
 getContactKey();
-    /**
-     *
-     *  setupDengageCR will Return OK if setup succesfully
-     * Other it will give error message
-     * User need to be provide LogStatus, FirebaseKey and Huawei Key
-     * One is required from Firebase Key and Huawei key
-     *
-     */
+  
    
 
-    // iOS Example SetupDengageCR(logStatus, integrationKey, launchOptions)
-    // promisify(DengageCR.setupDengage)(
-      //   true, "PE99_s_l_xjb2hXe42KaWrIXx6iEnwsQNvMGPH_s_l_lMfG3CpPTTxLhrGgcC55KMa2IuAdNBRGOTR4Bx2o_p_l_z1c63X_p_l_vWTeKdKHkeNOVYVezsv4ERVaZw9FkXHsbex_p_l_M6gujQEEb5Ld2zg8eg8w1w_p_l_PKlOU21g_e_q__e_q_", null)
-       // .then(getContactKey)
-        //.catch(showAlertMsg)
-
-    /**
-     * Prod iOS Sample App IntegerationKey
-     */
-    //
+ 
 
 }
