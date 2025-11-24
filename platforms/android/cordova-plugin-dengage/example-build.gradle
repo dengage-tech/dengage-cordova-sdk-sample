@@ -1,0 +1,14 @@
+allprojects {
+    repositories {
+         mavenCentral()
+         jcenter()
+         google()
+         maven { url "https://jitpack.io" }
+         maven { url 'https://developer.huawei.com/repo/' }
+    }
+}
+
+dependencies {
+      implementation 'com.github.dengage-tech.dengage-android-sdk:sdk:6.0.83'
+        
+}

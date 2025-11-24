@@ -2,7 +2,7 @@
 source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '11.0'
 
-target 'HelloWorld' do
-	project 'HelloWorld.xcodeproj'
-	pod 'Dengage', '~> 5.15.1'
+target 'DengageCordovaExample' do
+	project 'DengageCordovaExample.xcodeproj'
+	pod 'Dengage', '~> 5.85'
 end

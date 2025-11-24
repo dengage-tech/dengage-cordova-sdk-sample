@@ -1,39 +1,30 @@
 {
   "project_info": {
-    "project_number": "535515883564",
-    "project_id": "cordova-app-d2c8e",
-    "storage_bucket": "cordova-app-d2c8e.appspot.com"
+    "project_number": "89627728912",
+    "project_id": "cordova-3344c",
+    "storage_bucket": "cordova-3344c.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:535515883564:android:fa28b71218cfdddf398989",
+        "mobilesdk_app_id": "1:89627728912:android:e8b6e8bfc800677b603e95",
         "android_client_info": {
-          "package_name": "com.example.hello"
+          "package_name": "com.dengage.cordova.example"
         }
       },
-      "oauth_client": [
-        {
-          "client_id": "535515883564-eo2vm3fmfct1duv8cbtgmvcg7p2vup75.apps.googleusercontent.com",
-          "client_type": 3
-        }
-      ],
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCrPCp3Oa0TwGukknFOt_bffrEXwSmF8Fs"
+          "current_key": "AIzaSyCOjKXE86paLza2rLsXjZXg4mZBd5lsfjw"
         }
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": [
-            {
-              "client_id": "535515883564-eo2vm3fmfct1duv8cbtgmvcg7p2vup75.apps.googleusercontent.com",
-              "client_type": 3
-            }
-          ]
+          "other_platform_oauth_client": []
         }
       }
     }
   ],
   "configuration_version": "1"
 }
+

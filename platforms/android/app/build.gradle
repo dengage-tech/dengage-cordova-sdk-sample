@@ -21,7 +21,11 @@ apply plugin: 'com.android.application'
 
 if (cordovaConfig.IS_GRADLE_PLUGIN_KOTLIN_ENABLED) {
     apply plugin: 'kotlin-android'
-    apply plugin: 'kotlin-android-extensions'
+
+    if(!cdvHelpers.isVersionGreaterThanEqual(cordovaConfig.KOTLIN_VERSION, '1.8.0')) {
+        println "Kotlin version < 1.8.0 detected. Applying kotlin-android-extensions plugin."
+        apply plugin: 'kotlin-android-extensions'
+    }
 }
 
 buildscript {
@@ -44,7 +48,7 @@ buildscript {
             classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:${cordovaConfig.KOTLIN_VERSION}"
         }
 
-        if(cordovaConfig.IS_GRADLE_PLUGIN_GOOGLE_SERVICES_ENABLED) {
+        if(true) {
             // Checks if the kotlin version format is valid.
             if(!cdvHelpers.isVersionValid(cordovaConfig.GRADLE_PLUGIN_GOOGLE_SERVICES_VERSION)) {
                 throw new GradleException("The defined Google Services plugin version (${cordovaConfig.GRADLE_PLUGIN_GOOGLE_SERVICES_VERSION}) does not appear to be a valid version.")
@@ -109,7 +113,7 @@ ext {
 }
 
 // PLUGIN GRADLE EXTENSIONS START
-apply from: "../cordova-plugin-dengage/hello-build.gradle"
+apply from: "../cordova-plugin-dengage/example-build.gradle"
 // PLUGIN GRADLE EXTENSIONS END
 
 def hasBuildExtras1 = file('build-extras.gradle').exists()
@@ -180,14 +184,22 @@ task cdvPrintProps {
 }
 
 android {
+    namespace cordovaConfig.PACKAGE_NAMESPACE
+
+    buildFeatures {
+        buildConfig true
+    }
+
     defaultConfig {
         versionCode cdvVersionCode ?: new BigInteger("" + privateHelpers.extractIntFromManifest("versionCode"))
-        applicationId privateHelpers.extractStringFromManifest("package")
+        applicationId cordovaConfig.PACKAGE_NAMESPACE
 
-        minSdkVersion 23
-
-        targetSdkVersion 32
-        compileSdkVersion 32
+        minSdkVersion cordovaConfig.MIN_SDK_VERSION
+        if (cordovaConfig.MAX_SDK_VERSION != null) {
+            maxSdkVersion cordovaConfig.MAX_SDK_VERSION
+        }
+        targetSdkVersion cordovaConfig.SDK_VERSION
+        compileSdkVersion cordovaConfig.COMPILE_SDK_VERSION
     }
 
     lintOptions {
@@ -245,8 +257,19 @@ android {
     }
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaLanguageVersion.of(cordovaConfig.JAVA_SOURCE_COMPATIBILITY)
+        targetCompatibility JavaLanguageVersion.of(cordovaConfig.JAVA_TARGET_COMPATIBILITY)
+    }
+
+    if (cordovaConfig.IS_GRADLE_PLUGIN_KOTLIN_ENABLED) {
+        // If KOTLIN_JVM_TARGET is null, fallback to JAVA_TARGET_COMPATIBILITY,
+        // as they generally should be equal
+        cordovaConfig.KOTLIN_JVM_TARGET = cordovaConfig.KOTLIN_JVM_TARGET ?:
+                cordovaConfig.JAVA_TARGET_COMPATIBILITY
+
+        kotlinOptions {
+            jvmTarget = JavaLanguageVersion.of(cordovaConfig.KOTLIN_JVM_TARGET)
+        }
     }
 
     if (cdvReleaseSigningPropertiesFile) {
@@ -286,17 +309,27 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: '*.jar')
     implementation "androidx.appcompat:appcompat:${cordovaConfig.ANDROIDX_APP_COMPAT_VERSION}"
+    implementation "androidx.core:core-splashscreen:${cordovaConfig.ANDROIDX_CORE_SPLASHSCREEN_VERSION}"
 
     if (cordovaConfig.IS_GRADLE_PLUGIN_KOTLIN_ENABLED) {
-        implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:${cordovaConfig.KOTLIN_VERSION}"
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:${cordovaConfig.KOTLIN_VERSION}"
+    }
+
+    constraints {
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk7:${cordovaConfig.KOTLIN_VERSION}") {
+            because("kotlin-stdlib-jdk7 is now a part of kotlin-stdlib")
+        }
+        implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${cordovaConfig.KOTLIN_VERSION}") {
+            because("kotlin-stdlib-jdk8 is now a part of kotlin-stdlib")
+        }
     }
 
     // SUB-PROJECT DEPENDENCIES START
     implementation(project(path: ":CordovaLib"))
-    implementation "com.google.firebase:firebase-core:20.1.2"
-    implementation "com.google.firebase:firebase-messaging:23.0.2"
+    implementation "com.google.firebase:firebase-core:21.1.1"
+    implementation "com.google.firebase:firebase-messaging:23.3.1"
     implementation "com.google.firebase:firebase-analytics:18.0.2"
-    implementation "com.github.dengage-tech:dengage-android-sdk:6.0.9.1"
+    implementation "com.github.dengage-tech:dengage-android-sdk:6.0.83"
     // SUB-PROJECT DEPENDENCIES END
 }
 
@@ -340,5 +373,6 @@ if (hasProperty('postBuildExtras')) {
     postBuildExtras()
 }
 
-apply plugin: 'com.google.gms.google-services'
-
+if (true) {
+    apply plugin: 'com.google.gms.google-services'
+}

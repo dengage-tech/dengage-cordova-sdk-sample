@@ -1,6 +1,6 @@
 {
-  "name": "com.example.hello",
-  "displayName": "HelloWorld",
+  "name": "com.dengage.cordova.example",
+  "displayName": "DengageCordovaExample",
   "version": "1.0.0",
   "description": "A sample Apache Cordova application that responds to the deviceready event.",
   "main": "index.js",
@@ -13,22 +13,22 @@
   "author": "Apache Cordova Team",
   "license": "Apache-2.0",
   "devDependencies": {
-    "cordova-android": "^10.1.2",
-    "cordova-ios": "^6.2.0",
+    "cordova-android": "^14.0.1",
+    "cordova-ios": "^7.1.1",
     "cordova-plugin-add-swift-support": "^2.0.2",
-    "cordova-plugin-dengage": "^1.0.7"
+    "cordova-plugin-dengage": "file:../dengage-cordova-sdk"
   },
   "cordova": {
     "platforms": [
-      "ios",
-      "android"
+      "android",
+      "ios"
     ],
     "plugins": {
       "cordova-plugin-dengage": {
-        "ANDROID_FIREBASE_MESSAGING_VERSION": "23.0.2",
-        "ANDROID_FIREBASE_CORE_VERSION": "20.1.2",
+        "ANDROID_FIREBASE_MESSAGING_VERSION": "23.3.1",
+        "ANDROID_FIREBASE_CORE_VERSION": "21.1.1",
         "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2",
-        "ANDROID_DENGAGE_SDK": "6.0.9.1",
+        "ANDROID_DENGAGE_SDK": "6.0.83",
         "USESWIFTLANGUAGEVERSION": "5"
       }
     }

@@ -9,7 +9,7 @@
     "libraries": {
         "Dengage": {
             "name": "Dengage",
-            "spec": "~> 5.15.1",
+            "spec": "~> 5.85",
             "count": 1
         }
     }

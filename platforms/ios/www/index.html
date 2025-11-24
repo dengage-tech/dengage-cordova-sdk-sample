@@ -1,86 +1,247 @@
 <!DOCTYPE html>
-<!--
-    Licensed to the Apache Software Foundation (ASF) under one
-    or more contributor license agreements.  See the NOTICE file
-    distributed with this work for additional information
-    regarding copyright ownership.  The ASF licenses this file
-    to you under the Apache License, Version 2.0 (the
-    "License"); you may not use this file except in compliance
-    with the License.  You may obtain a copy of the License at
-
-    http://www.apache.oarg/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing,
-    software distributed under the License is distributed on an
-    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
-     KIND, either express or implied.  See the License for the
-    specific language governing permissions and limitations
-    under the License.
--->
 <html>
-<head>
-    <meta charset="utf-8">
-    <!--
-    Customize this policy to fit your own app's needs. For more guidance, see:
-        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
-    Some notes:
-        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
-        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
-        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
-            * Enable inline JS: add 'unsafe-inline' to default-src
-    -->
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <meta name="color-scheme" content="light dark">
-    <link rel="stylesheet" href="css/index.css">
-    <link rel="icon" href="data:,">
-    <title>Dengage Sample App</title>
-</head>
-<body>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: https://ssl.gstatic.com 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="initial-scale=1, width=device-width, viewport-fit=cover">
+        <meta name="color-scheme" content="light dark">
+        <link rel="stylesheet" href="css/index.css">
+        <title>Dengage Cordova Example</title>
+    </head>
+    <body>
+        <div class="app">
+            <!-- Navigation Container -->
+            <div id="navigation-container">
+                <!-- Home Screen -->
+                <div id="home-screen" class="screen active">
+                    <div class="screen-header">
+                        <h1>Dengage SDK</h1>
+                    </div>
+                    <div class="screen-content">
+                        <ul class="menu-list" id="home-menu">
+                            <li><button class="menu-button" data-screen="notification">ASK NOTIFICATIONS</button></li>
+                            <li><button class="menu-button" data-screen="device-info">DEVICE INFO</button></li>
+                            <li><button class="menu-button" data-screen="contact-key">CHANGE CONTACT KEY</button></li>
+                            <li><button class="menu-button" data-screen="inbox-messages">INBOX MESSAGES</button></li>
+                            <li><button class="menu-button" data-screen="in-app-message">IN APP MESSAGE</button></li>
+                            <li><button class="menu-button" data-screen="rt-in-app-message">REAL TIME IN APP MESSAGE</button></li>
+                            <li><button class="menu-button" data-screen="rt-in-app-filters">REAL TIME IN APP FILTERS</button></li>
+                            <li><button class="menu-button" data-screen="geofence">GEOFENCE</button></li>
+                            <li><button class="menu-button" data-screen="in-app-inline">INAPP INLINE</button></li>
+                            <li><button class="menu-button" data-screen="app-story">APP STORY</button></li>
+                        </ul>
+                    </div>
+                </div>
 
-<div class="app">
-    <div class="center-block loader" id="loader"></div>
+                <!-- Notification Screen -->
+                <div id="notification-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>ASK NOTIFICATIONS</h2>
+                    </div>
+                    <div class="screen-content">
+                        <p>Notification permission will be requested.</p>
+                    </div>
+                </div>
 
-    <div class="d-none" id="app-root">
-        <div id="container">
-            <div class="form-group">
-                <input type="text" class="form-control" id="contact-key" placeholder="Set Contact Key">
-            </div>
-            <button type="button" class="btn btn-primary center" onclick="setContactKey()">Set/Update Contact Key
-            </button>
-        </div>
+                <!-- Device Info Screen -->
+                <div id="device-info-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>DEVICE INFO</h2>
+                    </div>
+                    <div class="screen-content">
+                        <div id="device-info-list" class="info-list"></div>
+                    </div>
+                </div>
 
-        <div class="form-group mt-15">
-            <button type="button" class="btn btn-primary mt-2" onclick="getToken()">Get Token</button>
-            <button type="button" class="btn btn-primary mt-2 d-none" onclick="askNotificationPermission()" id="ask-permission">Ask Permission
-            </button>
-        </div>
-        <div class="form-group mt-15">
-            <button type="button" class="btn btn-primary mt-2" onclick="getSubscription()">Get Subscription</button>
-        </div>
-        <span class="text-dark" id="tokenSubscription"></span>
+                <!-- Contact Key Screen -->
+                <div id="contact-key-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>CHANGE CONTACT KEY</h2>
+                    </div>
+                    <div class="screen-content">
+                        <input type="text" id="contact-key-input" class="text-input" placeholder="Contact Key">
+                        <div class="switch-row">
+                            <label>User Permission</label>
+                            <label class="switch">
+                                <input type="checkbox" id="permission-switch">
+                                <span class="slider"></span>
+                            </label>
+                        </div>
+                        <button class="primary-button" onclick="saveContactKey()">Save</button>
+                    </div>
+                </div>
 
-        <form>
-            <div class="form-group row mt-15">
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" id="navigationVal" placeholder="Set Navigation with Name">
-                    <button type="button" class="btn btn-primary mt-15 btn-block" onclick="setNavigationWithName()">Set Navigation</button>
+                <!-- Inbox Messages Screen -->
+                <div id="inbox-messages-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>INBOX MESSAGES</h2>
+                    </div>
+                    <div class="screen-content">
+                        <div id="inbox-messages-list" class="messages-list"></div>
+                        <div id="inbox-loading" class="loading">Loading...</div>
+                        <div id="inbox-empty" class="empty-state" style="display: none;">No messages found.</div>
+                    </div>
+                </div>
+
+                <!-- In App Message Screen -->
+                <div id="in-app-message-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>IN APP MESSAGE</h2>
+                    </div>
+                    <div class="screen-content">
+                        <input type="text" id="screen-name-input" class="text-input" placeholder="Screen Name">
+                        <button class="primary-button" onclick="setNavigation()">Set Navigation</button>
+                        <button class="secondary-button" onclick="clearDeviceInfo()">Clear Device Info</button>
+                        <div class="device-info-container">
+                            <h3>Device Info</h3>
+                            <div id="device-info-items"></div>
+                            <button class="link-button" onclick="addDeviceInfoItem()">+ Add New Device Info</button>
+                            <button class="link-button danger" onclick="clearDeviceInfo()">Clear Device Info</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- RT In App Message Screen -->
+                <div id="rt-in-app-message-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>REAL TIME IN APP MESSAGE</h2>
+                    </div>
+                    <div class="screen-content">
+                        <div class="custom-function-row">
+                            <input type="text" id="category-path-input" class="text-input" placeholder="Category Path">
+                            <button class="small-button" onclick="setCategoryPath()">Set</button>
+                        </div>
+                        <div class="custom-function-row">
+                            <input type="text" id="cart-item-count-input" class="text-input" placeholder="Cart Item Count">
+                            <button class="small-button" onclick="setCartItemCount()">Set</button>
+                        </div>
+                        <div class="custom-function-row">
+                            <input type="text" id="cart-amount-input" class="text-input" placeholder="Cart Amount">
+                            <button class="small-button" onclick="setCartAmount()">Set</button>
+                        </div>
+                        <div class="custom-function-row">
+                            <input type="text" id="state-input" class="text-input" placeholder="State">
+                            <button class="small-button" onclick="setState()">Set</button>
+                        </div>
+                        <div class="custom-function-row">
+                            <input type="text" id="city-input" class="text-input" placeholder="City">
+                            <button class="small-button" onclick="setCity()">Set</button>
+                        </div>
+                        <input type="text" id="rt-screen-name-input" class="text-input" placeholder="Screen name">
+                        <button class="link-button" onclick="addRTParameter()">+ Add New Parameter</button>
+                        <div id="rt-parameters"></div>
+                        <button class="primary-button" onclick="showRealTimeInApp()">Show Real Time In App</button>
+                    </div>
+                </div>
+
+                <!-- RT In App Filters Screen -->
+                <div id="rt-in-app-filters-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>REAL TIME IN APP FILTERS</h2>
+                    </div>
+                    <div class="screen-content">
+                        <button class="menu-button" onclick="navigateToScreen('event-history')">Event History</button>
+                        <button class="menu-button" onclick="navigateToScreen('cart')">Cart</button>
+                    </div>
+                </div>
+
+                <!-- Geofence Screen -->
+                <div id="geofence-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>GEOFENCE</h2>
+                    </div>
+                    <div class="screen-content">
+                        <button class="primary-button" onclick="requestLocationPermissions()">Request Location Always Authorization</button>
+                    </div>
+                </div>
+
+                <!-- In App Inline Screen -->
+                <div id="in-app-inline-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>INAPP INLINE</h2>
+                    </div>
+                    <div class="screen-content">
+                        <input type="text" id="inline-property-id-input" class="text-input" placeholder="Property ID" value="1">
+                        <input type="text" id="inline-screen-name-input" class="text-input" placeholder="Screen Name" value="inline">
+                        <button class="primary-button" onclick="showInAppInline()">Show InApp Inline</button>
+                        <div id="inline-container" style="margin-top: 16px; height: 244px;"></div>
+                    </div>
+                </div>
+
+                <!-- App Story Screen -->
+                <div id="app-story-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToHome()">← Back</button>
+                        <h2>APP STORY</h2>
+                    </div>
+                    <div class="screen-content">
+                        <input type="text" id="story-property-id-input" class="text-input" placeholder="Property Id" value="1">
+                        <input type="text" id="story-screen-name-input" class="text-input" placeholder="Screen Name" value="appstory">
+                        <input type="text" id="story-bg-color-input" class="text-input" placeholder="Story Background Color" value="#ffffff">
+                        <button class="primary-button" onclick="changeStoryBackgroundColor()">Change Story Background Color</button>
+                        <button class="primary-button" onclick="refreshStory()">Refresh Story</button>
+                        <div id="story-container" style="width: 100%; margin-top: 16px; background-color: #ffffff;"></div>
+                    </div>
+                </div>
+
+                <!-- Event History Screen -->
+                <div id="event-history-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToScreen('rt-in-app-filters')">← Back</button>
+                        <h2>EVENT HISTORY</h2>
+                    </div>
+                    <div class="screen-content">
+                        <div id="table-name-display" class="label">Table Name: </div>
+                        <div id="event-type-selector" style="display: none;">
+                            <div class="label">Event Type:</div>
+                            <button class="picker-button" id="event-type-picker" onclick="showEventTypePicker()">Select Event Type</button>
+                        </div>
+                        <button class="link-button" onclick="addEventParameter()">+ Add Parameter</button>
+                        <div id="event-parameters"></div>
+                        <button class="primary-button" onclick="sendEvent()">Send Event</button>
+                    </div>
+                </div>
+
+                <!-- Cart Screen -->
+                <div id="cart-screen" class="screen">
+                    <div class="screen-header">
+                        <button class="back-button" onclick="navigateToScreen('rt-in-app-filters')">← Back</button>
+                        <h2>CART</h2>
+                    </div>
+                    <div class="screen-content">
+                        <button class="link-button" onclick="addCartItem()">+ Add Item</button>
+                        <div id="cart-items"></div>
+                        <div id="cart-empty" class="empty-state" style="display: none;">No items in cart</div>
+                        <button id="update-cart-button" class="primary-button" style="display: none;" onclick="updateCart()">Update Cart</button>
+                    </div>
                 </div>
             </div>
-            <div class="form-group row mt-15">
-                <div class="col-sm-10">
-                    <button type="button" class="btn btn-primary mt-15 btn-block" onclick="setTags()">Set Tags</button>
-                </div>
-            </div>
-        </form>
-    </div>
-</div>
-
-<script src="cordova.js"></script>
-<script src="js/index.js"></script>
-</body>
+        </div>
+        <script src="cordova.js"></script>
+        <script src="js/index.js"></script>
+        <script src="js/navigation.js"></script>
+        <script src="js/screens/home.js"></script>
+        <script src="js/screens/device-info.js"></script>
+        <script src="js/screens/contact-key.js"></script>
+        <script src="js/screens/inbox-messages.js"></script>
+        <script src="js/screens/in-app-message.js"></script>
+        <script src="js/screens/rt-in-app-message.js"></script>
+        <script src="js/screens/geofence.js"></script>
+        <script src="js/screens/in-app-inline.js"></script>
+        <script src="js/screens/app-story.js"></script>
+        <script src="js/screens/event-history.js"></script>
+        <script src="js/screens/cart.js"></script>
+        <script src="js/dengage-init.js"></script>
+    </body>
 </html>

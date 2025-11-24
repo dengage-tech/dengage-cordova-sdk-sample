@@ -2,7 +2,7 @@ cordova.define('cordova/plugin_list', function(require, exports, module) {
   module.exports = [
     {
       "id": "cordova-plugin-dengage.DengageCR",
-      "file": "plugins/cordova-plugin-dengage/www/DengageCR.js",
+      "file": "plugins/cordova-plugin-dengage/www/Dengage.js",
       "pluginId": "cordova-plugin-dengage",
       "clobbers": [
         "DengageCR"

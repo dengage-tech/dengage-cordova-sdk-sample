@@ -23,18 +23,18 @@
   },
   "installed_plugins": {
     "cordova-plugin-dengage": {
-      "ANDROID_FIREBASE_MESSAGING_VERSION": "23.0.2",
-      "ANDROID_FIREBASE_CORE_VERSION": "20.1.2",
+      "ANDROID_FIREBASE_MESSAGING_VERSION": "23.3.1",
+      "ANDROID_FIREBASE_CORE_VERSION": "21.1.1",
       "ANDROID_FIREBASE_FIREBASE_ANALYTICS": "18.0.2",
-      "ANDROID_DENGAGE_SDK": "6.0.9.1",
-      "PACKAGE_NAME": "com.example.hello"
+      "ANDROID_DENGAGE_SDK": "6.0.83",
+      "PACKAGE_NAME": "com.dengage.cordova.example"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
       "id": "cordova-plugin-dengage.DengageCR",
-      "file": "plugins/cordova-plugin-dengage/www/DengageCR.js",
+      "file": "plugins/cordova-plugin-dengage/www/Dengage.js",
       "pluginId": "cordova-plugin-dengage",
       "clobbers": [
         "DengageCR"

@@ -19,18 +19,18 @@
   },
   "installed_plugins": {
     "cordova-plugin-add-swift-support": {
-      "PACKAGE_NAME": "com.example.hello"
+      "PACKAGE_NAME": "com.dengage.cordova.example"
     },
     "cordova-plugin-dengage": {
       "USESWIFTLANGUAGEVERSION": "5",
-      "PACKAGE_NAME": "com.example.hello"
+      "PACKAGE_NAME": "com.dengage.cordova.example"
     }
   },
   "dependent_plugins": {},
   "modules": [
     {
       "id": "cordova-plugin-dengage.DengageCR",
-      "file": "plugins/cordova-plugin-dengage/www/DengageCR.js",
+      "file": "plugins/cordova-plugin-dengage/www/Dengage.js",
       "pluginId": "cordova-plugin-dengage",
       "clobbers": [
         "DengageCR"
