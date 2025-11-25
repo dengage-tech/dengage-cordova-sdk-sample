@@ -194,9 +194,13 @@
                         <input type="text" id="story-property-id-input" class="text-input" placeholder="Property Id" value="1">
                         <input type="text" id="story-screen-name-input" class="text-input" placeholder="Screen Name" value="appstory">
                         <input type="text" id="story-bg-color-input" class="text-input" placeholder="Story Background Color" value="#ffffff">
-                        <button class="primary-button" onclick="changeStoryBackgroundColor()">Change Story Background Color</button>
-                        <button class="primary-button" onclick="refreshStory()">Refresh Story</button>
-                        <div id="story-container" style="width: 100%; margin-top: 16px; background-color: #ffffff;"></div>
+                        <input type="text" id="story-custom-params-input" class="text-input" placeholder='Custom Params (JSON)' value='{"source":"cordova-story"}'>
+                        <div style="display:flex; gap:12px; margin-bottom:12px;">
+                            <button class="primary-button" onclick="refreshStory()">Show App Story</button>
+                            <button class="secondary-button" onclick="hideAppStory()">Hide App Story</button>
+                        </div>
+                        <div id="story-feedback" style="min-height:24px; font-weight:500; color:#004085;"></div>
+                        <div id="story-container" style="margin-top: 16px; border:1px dashed #9aa0b4; height: 260px; background:#fafafa; overflow:hidden; position:relative;"></div>
                     </div>
                 </div>
 
