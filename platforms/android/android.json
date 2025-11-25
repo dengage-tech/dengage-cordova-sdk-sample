@@ -9,7 +9,7 @@
         "parents": {
           "/*": [
             {
-              "xml": "<feature name=\"DengageCR\"><param name=\"android-package\" value=\"DengageCR\" /><param name=\"onload\" value=\"true\" /></feature>",
+              "xml": "<feature name=\"DengageCR\"><param name=\"android-package\" value=\"com.dengage.cordova.dengagecr.DengageCR\" /><param name=\"onload\" value=\"true\" /></feature>",
               "count": 1
             },
             {

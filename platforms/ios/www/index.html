@@ -174,8 +174,13 @@
                     <div class="screen-content">
                         <input type="text" id="inline-property-id-input" class="text-input" placeholder="Property ID" value="1">
                         <input type="text" id="inline-screen-name-input" class="text-input" placeholder="Screen Name" value="inline">
-                        <button class="primary-button" onclick="showInAppInline()">Show InApp Inline</button>
-                        <div id="inline-container" style="margin-top: 16px; height: 244px;"></div>
+                        <input type="text" id="inline-custom-params-input" class="text-input" placeholder="Custom Params (JSON)" value='{"source":"cordova"}'>
+                        <div style="display:flex; gap:12px; margin-bottom:12px;">
+                            <button class="primary-button" onclick="showInAppInline()">Show InApp Inline</button>
+                            <button class="secondary-button" onclick="hideInAppInline()">Hide Inline</button>
+                        </div>
+                        <div id="inline-feedback" style="min-height:24px; font-weight:500; color:#004085;"></div>
+                        <div id="inline-container" style="margin-top: 16px; border:1px dashed #9aa0b4; height: 220px; background:#ffffff; overflow:hidden; position:relative;"></div>
                     </div>
                 </div>
 

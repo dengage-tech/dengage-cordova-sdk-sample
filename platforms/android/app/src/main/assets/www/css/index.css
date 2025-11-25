@@ -18,11 +18,14 @@ body {
     color: #222;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    padding-top: env(safe-area-inset-top);
+    padding-bottom: env(safe-area-inset-bottom);
 }
 
 .app {
     width: 100%;
     height: 100vh;
+    height: calc(100vh - env(safe-area-inset-top) - env(safe-area-inset-bottom));
     overflow: hidden;
 }
 
@@ -42,6 +45,7 @@ body {
 .screen-header {
     background-color: #f8f8f8;
     padding: 16px;
+    padding-top: max(16px, calc(16px + env(safe-area-inset-top)));
     border-bottom: 1px solid #e0e0e0;
     display: flex;
     align-items: center;
@@ -49,6 +53,7 @@ body {
     position: sticky;
     top: 0;
     z-index: 10;
+    min-height: calc(50px + env(safe-area-inset-top));
 }
 
 .screen-header h1,

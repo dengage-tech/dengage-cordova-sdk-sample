@@ -11,15 +11,16 @@
 		0498157D10EB6DCF7D212079 /* libPods-DengageCordovaExample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DAA5E3D6DA6EF94AC2C84B3C /* libPods-DengageCordovaExample.a */; };
 		1D3623260D0F684500981E51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3623250D0F684500981E51 /* AppDelegate.m */; };
 		1D60589B0D05DD56006BFB54 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; };
-		29DD3E910AB44EF88BC558E3 /* DengageCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CD2FD857648EEB94501A6 /* DengageCR.swift */; };
 		301BF552109A68D80062928A /* libCordova.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 301BF535109A57CC0062928A /* libCordova.a */; settings = {ATTRIBUTES = (Required, ); }; };
 		302D95F114D2391D003F00A1 /* MainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 302D95EF14D2391D003F00A1 /* MainViewController.m */; };
 		302D95F214D2391D003F00A1 /* MainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 302D95F014D2391D003F00A1 /* MainViewController.xib */; };
 		4E7CA2B6272ABB0D00177EF9 /* config.xml in Copy Staging Resources */ = {isa = PBXBuildFile; fileRef = F840E1F0165FE0F500CFE078 /* config.xml */; };
 		4E7CA2B7272ABB0D00177EF9 /* www in Copy Staging Resources */ = {isa = PBXBuildFile; fileRef = 301BF56E109A69640062928A /* www */; };
-		577221EEDC3B4A548A47F226 /* DengageCRCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = A66A0BE8564F481A8AE6A066 /* DengageCRCoordinator.swift */; };
 		6AFF5BF91D6E424B00AB3073 /* CDVLaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */; };
 		90B630EF2AECBBD0009EF368 /* PrivacyInfo.xcprivacy in Resources */ = {isa = PBXBuildFile; fileRef = 90B630EE2AECBBD0009EF368 /* PrivacyInfo.xcprivacy */; };
+		92FB2D399D474460AA0315B2 /* DengageCR.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50C9B251368F4D5A9E15BD1C /* DengageCR.swift */; };
+		BC2CB2732E974F1C87556F35 /* DengageInlineOverlayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64341023F66549ED9ECD6E39 /* DengageInlineOverlayView.swift */; };
+		72F9BE1EC46F4AC58ED55EBD /* DengageCRCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 515C71D6783249B38A3E01A6 /* DengageCRCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,14 +81,15 @@
 		6AFF5BF81D6E424B00AB3073 /* CDVLaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CDVLaunchScreen.storyboard; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* DengageCordovaExample-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "DengageCordovaExample-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
 		90B630EE2AECBBD0009EF368 /* PrivacyInfo.xcprivacy */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = PrivacyInfo.xcprivacy; sourceTree = "<group>"; };
-		A66A0BE8564F481A8AE6A066 /* DengageCRCoordinator.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = DengageCRCoordinator.swift; path = "cordova-plugin-dengage/DengageCRCoordinator.swift"; sourceTree = "<group>"; };
 		A69761E25889F37F06D33A6C /* Pods-DengageCordovaExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DengageCordovaExample.release.xcconfig"; path = "Target Support Files/Pods-DengageCordovaExample/Pods-DengageCordovaExample.release.xcconfig"; sourceTree = "<group>"; };
-		CA3CD2FD857648EEB94501A6 /* DengageCR.swift */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.swift; name = DengageCR.swift; path = "cordova-plugin-dengage/DengageCR.swift"; sourceTree = "<group>"; };
 		DAA5E3D6DA6EF94AC2C84B3C /* libPods-DengageCordovaExample.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DengageCordovaExample.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EB87FDF31871DA8E0020F90C /* www */ = {isa = PBXFileReference; lastKnownFileType = folder; name = www; path = ../../www; sourceTree = "<group>"; };
 		EB87FDF41871DAF40020F90C /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = ../../config.xml; sourceTree = "<group>"; };
 		ED33DF2A687741AEAF9F8254 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = DengageCordovaExample/config.xml; sourceTree = "<group>"; };
+		50C9B251368F4D5A9E15BD1C /* DengageCR.swift */ = {isa = PBXFileReference; name = "DengageCR.swift"; path = "cordova-plugin-dengage/DengageCR.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		64341023F66549ED9ECD6E39 /* DengageInlineOverlayView.swift */ = {isa = PBXFileReference; name = "DengageInlineOverlayView.swift"; path = "cordova-plugin-dengage/DengageInlineOverlayView.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
+		515C71D6783249B38A3E01A6 /* DengageCRCoordinator.swift */ = {isa = PBXFileReference; name = "DengageCRCoordinator.swift"; path = "cordova-plugin-dengage/DengageCRCoordinator.swift"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.swift; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,8 +197,9 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
-				CA3CD2FD857648EEB94501A6 /* DengageCR.swift */,
-				A66A0BE8564F481A8AE6A066 /* DengageCRCoordinator.swift */,
+				50C9B251368F4D5A9E15BD1C /* DengageCR.swift */,
+				64341023F66549ED9ECD6E39 /* DengageInlineOverlayView.swift */,
+				515C71D6783249B38A3E01A6 /* DengageCRCoordinator.swift */,
 			);
 			name = Plugins;
 			path = DengageCordovaExample/Plugins;
@@ -330,8 +333,9 @@
 				1D60589B0D05DD56006BFB54 /* main.m in Sources */,
 				1D3623260D0F684500981E51 /* AppDelegate.m in Sources */,
 				302D95F114D2391D003F00A1 /* MainViewController.m in Sources */,
-				29DD3E910AB44EF88BC558E3 /* DengageCR.swift in Sources */,
-				577221EEDC3B4A548A47F226 /* DengageCRCoordinator.swift in Sources */,
+				92FB2D399D474460AA0315B2 /* DengageCR.swift in Sources */,
+				BC2CB2732E974F1C87556F35 /* DengageInlineOverlayView.swift in Sources */,
+				72F9BE1EC46F4AC58ED55EBD /* DengageCRCoordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
