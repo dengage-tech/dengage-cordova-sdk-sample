@@ -4,5 +4,5 @@ platform :ios, '11.0'
 
 target 'DengageCordovaExample' do
 	project 'DengageCordovaExample.xcodeproj'
-	pod 'Dengage', '~> 5.85'
+	pod 'Dengage', '~> 5.87'
 end

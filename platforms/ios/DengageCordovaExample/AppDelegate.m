@@ -23,7 +23,7 @@
 #import <UserNotifications/UserNotifications.h>
 
 // TODO: Replace with your iOS Integration Key
-static NSString *integrationKey = @"9MBNB5X2IWf8oBfxaNjs5kWcmObGwc8g6bmJcqS2rprtPSJgAThZL_s_l_n1nypZLOoQApPKMzfFMoJpU_s_l_BQk9YpJMk3mn05bpF3_p_l_1XjtNC1jvrEkEZ3D8h5VmUz0U4xmiI0ycs7_s_l_BJ20fOwTQsOq5OXRA_e_q__e_q_";
+static NSString *integrationKey = @"GLPWLD1LN61ALT0JrJwWqrDGURiCu9Tftk4kSCDIZcbtZN_s_l_K_s_l_yDpx7_p_l_25FOg6F8PYvAT6Y14Y1HCEO9qBvIUZ06SAiKBJ2GuAyoYFqZrPxfHlnJcJ5T_p_l_zjK_p_l_8TK8VwTizMzOxDuE0Bqzle36y5dBaA_e_q__e_q_";
 static NSString *appGroupsKey = @"group.com.dengage.cordova.example.dengage";
 
 @implementation AppDelegate
@@ -43,7 +43,7 @@ static NSString *appGroupsKey = @"group.com.dengage.cordova.example.dengage";
                                            application:application
                             askNotificationPermission:YES
                                        enableGeoFence:YES
-                                        disableOpenURL:NO
+                                        disableOpenURL:YES
                                        badgeCountReset:NO
                                             logVisible:YES];
     
